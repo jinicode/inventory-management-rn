@@ -44,16 +44,9 @@ export default class HistoryListItem extends React.Component {
         path: `${dirs.DownloadDir}/test.pdf`,
       },
     })
-      .fetch(
-        `http://chouhanaryan.pythonanywhere.com/api/pdf/${id}`,
-        {
-          method: "GET",
-          headers: {
-            "Authorization": `Token ${auth_key}`,
-            "Content-Type": "application/json",
-          }
-        
-        },
+      .fetch("GET",
+        `http://chouhanaryan.pythonanywhere.com/api/wejwafjbf204729487/5`,
+       
         {'Cache-Control': 'no-store'},
       )
       .then(res => {
@@ -102,15 +95,7 @@ export default class HistoryListItem extends React.Component {
           <Text style={listItemStyles.product}>{this.props.item.name}</Text>
           <Text style={listItemStyles.items}>{this.props.item.quantity}</Text>
           <Text style={listItemStyles.price}>{this.props.item.rate}</Text>
-          <Icon
-            name="download"
-            size={30}
-            color="black"
-            style={{flex: 0.1}}
-            onPress={() => {
-              this.downloadFile(this.props.item.id);
-            }}
-          />
+          <Icon name="download" size={30} color="black" style={{ flex: 0.1 }} onPress={() => { this.downloadFile(this.props.item.id) }} />
         </CardItem>
       </View>
     );
@@ -131,12 +116,12 @@ const listItemStyles = StyleSheet.create({
   product: {
     flex: 0.3,
     fontSize: 16,
-    marginLeft: -10,
+    marginLeft: -10
   },
   items: {
     flex: 0.25,
     fontSize: 16,
-    marginLeft: 5,
+    marginLeft: 5
   },
   price: {
     flex: 0.2,
