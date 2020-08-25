@@ -30,7 +30,7 @@ const RegisterScreen = ({navigation}) => {
       </Header>
       <Content>
         <Body>
-          <Text style={styles.heading}>Register</Text>
+          {/* <Text style={styles.heading}>Register</Text> */}
           <Text
             style={{
               alignSelf: 'flex-start',

@@ -8,6 +8,7 @@ import {
   PermissionsAndroid,
   Platform,
   AsyncStorage,
+  TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import RNFetchBlob from 'rn-fetch-blob';
@@ -40,20 +41,23 @@ export default class HistoryListItem extends React.Component {
         mime: 'application/pdf',
         notification: true,
         mediaScannable: true,
-        title: 'test.pdf',
-        path: `${dirs.DownloadDir}/test.pdf`,
+        title:  `invoice${id}.pdf`,
+        path: `${dirs.DownloadDir}/invoice${id}.pdf`,
       },
     })
       .fetch("GET",
-        `http://chouhanaryan.pythonanywhere.com/api/wejwafjbf204729487/5`,
-       
-        {'Cache-Control': 'no-store'},
+        `http://chouhanaryan.pythonanywhere.com/api/pdf/${id}`,
+        {
+          'Content-Type': 'application/pdf',
+          'Authorization': "Token " + auth_key,
+        },
       )
-      .then(res => {
+      .then(async res => {
+        
         console.log(res);
-        if ((Platform.OS = 'android')) {
-          android.actionViewIntent(res.path(), 'application/pdf');
-        }
+        // if ((Platform.OS = 'android')) {
+        //   android.actionViewIntent(res.path(), 'application/pdf');
+        // }
       })
       .catch(e => {
         console.log(e);
@@ -95,7 +99,9 @@ export default class HistoryListItem extends React.Component {
           <Text style={listItemStyles.product}>{this.props.item.name}</Text>
           <Text style={listItemStyles.items}>{this.props.item.quantity}</Text>
           <Text style={listItemStyles.price}>{this.props.item.rate}</Text>
+          <TouchableOpacity>
           <Icon name="download" size={30} color="black" style={{ flex: 0.1 }} onPress={() => { this.downloadFile(this.props.item.id) }} />
+          </TouchableOpacity>
         </CardItem>
       </View>
     );

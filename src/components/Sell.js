@@ -73,6 +73,10 @@ const Sell = ({navigation}) => {
       formData.append('name', product.name);
       formData.append('quantity', parseInt(product.amount));
       formData.append('latest_selling_price', parseFloat(product.price));
+      formdata.append('name', customerName);
+      formdata.append('phone', phoneNumber);
+      formdata.append('address', address);
+      formdata.append('in_or_out', 'Out');
       var myHeaders = new Headers();
       const auth_key = await AsyncStorage.getItem('auth_key');
 
