@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -23,12 +23,11 @@ import {
 } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { ScrollView } from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import axios from 'axios';
 
-
-const Buy = ({ navigation }) => {
+const Buy = ({navigation}) => {
   const [product, setProduct] = useState([]);
   const [date_array, setDate_array] = useState([]);
 
@@ -39,26 +38,29 @@ const Buy = ({ navigation }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [address, setAddress] = useState('');
 
-
   useEffect(() => {
-    setProduct([{ name: '', price: 0, amount: 0, expiry: '' }]);
-    setDate_array([new Date()])
+    setProduct([{name: '', price: 0, amount: 0, expiry: ''}]);
+    setDate_array([new Date()]);
   }, []);
 
-
   const buyprod = async () => {
-
     product.forEach(async product => {
       const formdata = new FormData();
-      formdata.append("name", product.name);
-      formdata.append("avg_cost_price", product.price);
-      formdata.append("quantity", product.amount);
 
-      formdata.append("expiry", product.expiry);
+    
+
+      formdata.append('name', product.name);
+      formdata.append('price', product.price);
+      formdata.append('quantity', product.amount);
+      formdata.append('name', customerName);
+      formdata.append('phone', phoneNumber);
+      formdata.append('address', address);
+      formdata.append('in_or_out', 'In');
+
+      formdata.append('expiryDate', product.expiry);
       let myHeaders = new Headers();
       const auth_key = await AsyncStorage.getItem('auth_key');
-      myHeaders.append("Authorization", `Token ${auth_key}`);
-
+      myHeaders.append('Authorization', `Token ${auth_key}`);
 
       fetch('http://chouhanaryan.pythonanywhere.com/api/buy/', {
         method: 'POST',
@@ -71,15 +73,13 @@ const Buy = ({ navigation }) => {
     });
   };
 
-
-
-  const set_date = (e) => {
+  const set_date = e => {
     setShow(false);
 
     let date_array_copy = [...date_array];
     let product_copy = [...product];
 
-    const date = new Date(e.nativeEvent.timestamp)
+    const date = new Date(e.nativeEvent.timestamp);
 
     date_array_copy[curr_ind] = date;
     setDate_array(date_array_copy);
@@ -96,27 +96,18 @@ const Buy = ({ navigation }) => {
       product_copy[curr_ind].expiry = final_date;
       setProduct(product_copy);
     }
-  }
-
+  };
 
   return (
-    <Container style={{ backgroundColor: '#F3F9FB' }}>
+    <Container style={{backgroundColor: '#F3F9FB'}}>
       <ScrollView>
         <Body>
           <Text style={styles.heading}>Buy Items</Text>
 
           {/* separator line above name, phone no. and address fields */}
-          <View style={{ flex: 1, flexDirection: 'row', marginBottom: 10 }}>
+          <View style={{flex: 1, flexDirection: 'row', marginBottom: 10}}>
             <View
-              style={{
-                borderColor: '#0004',
-                borderWidth: 1,
-                width: '90%',
-                alignSelf: 'center',
-                borderRadius: 2,
-                marginBottom: -10,
-                marginTop: 5,
-              }}
+              style={styles.mainView}
             />
           </View>
 
@@ -135,7 +126,7 @@ const Buy = ({ navigation }) => {
             <Label style={styles.label}>Phone number</Label>
             <Input
               style={styles.inputArea}
-              keyboardType='number-pad'
+              keyboardType="number-pad"
               value={phoneNumber}
               onChangeText={value => setPhoneNumber(value)}
             />
@@ -151,21 +142,12 @@ const Buy = ({ navigation }) => {
             />
           </Item>
 
-
           {product.map((item, index) => {
             return (
-              <View key={index} style={{ width: Dimensions.get('window').width }}>
+              <View key={index} style={{width: Dimensions.get('window').width}}>
                 {/* for the separating line */}
                 <View
-                  style={{
-                    borderColor: '#0004',
-                    borderWidth: 1,
-                    width: '90%',
-                    alignSelf: 'center',
-                    borderRadius: 2,
-                    marginBottom: -10,
-                    marginTop: 5,
-                  }}
+                  style={styles.mainBorder}
                 />
 
                 {/* Product title */}
@@ -208,33 +190,24 @@ const Buy = ({ navigation }) => {
                 </Item>
 
                 {/* Expiry date text */}
-                <View style={{ flexDirection: 'row', flex: 1 }}>
+                <View style={{flexDirection: 'row', flex: 1}}>
                   <View style={styles.dateMainView}>
                     <Text
-                      style={{
-                        marginLeft: 4,
-                        fontSize: 16,
-                        marginTop: 17,
-                        color: 'black',
-                      }}>
+                      style={styles.expiryText}>
                       Expiry: {product[index].expiry}
                     </Text>
                   </View>
 
-                  <TouchableOpacity onPress={() => {
-                    setCurr_ind(index);
-                    setShow(true)
-                  }}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      setCurr_ind(index);
+                      setShow(true);
+                    }}>
                     <Icon
                       name="calendar"
                       color="#4796BD"
                       size={30}
-                      style={{
-                        marginLeft: -10,
-                        flex: 1,
-                        marginRight: 30,
-                        marginTop: 20,
-                      }}
+                      style={styles.datePickerIcon}
                     />
                   </TouchableOpacity>
                 </View>
@@ -246,10 +219,10 @@ const Buy = ({ navigation }) => {
                       <DateTimePicker
                         testID="dateTimePicker"
                         value={new Date()}
-                        mode='date'
+                        mode="date"
                         is24Hour={true}
                         display="default"
-                        onChange={(e) => set_date(e)}
+                        onChange={e => set_date(e)}
                       />
                     )}
                   </View>
@@ -264,10 +237,10 @@ const Buy = ({ navigation }) => {
                 product[product.length - 1].name &&
                 product[product.length - 1].price &&
                 product[product.length - 1].amount &&
-                product[product.length - 1].expiry.length === 10  // length should be 10 because for date, we have format YYYY-MM-DD, and the length of the string is thus 10
+                product[product.length - 1].expiry.length === 10 // length should be 10 because for date, we have format YYYY-MM-DD, and the length of the string is thus 10
               ) {
                 let copy = [...product];
-                copy.push({ name: '', price: 0, amount: 0, expiry: '' });
+                copy.push({name: '', price: 0, amount: 0, expiry: ''});
                 setProduct(copy);
                 let dates_copy = [...date_array];
                 dates_copy.push(new Date());
@@ -305,15 +278,15 @@ const Buy = ({ navigation }) => {
                 );
               } else {
                 await buyprod();
-               await  setProduct([]);
-               await  setProduct([{ name: '', price: 0, amount: 0, expiry: '' }]);
+                await setProduct([]);
+                await setProduct([{name: '', price: 0, amount: 0, expiry: ''}]);
                 await setDate_array([new Date()]);
                 await setAddress();
                 await setAddress('');
-                await  setCustomerName();
+                await setCustomerName();
                 await setCustomerName('');
                 await setPhoneNumber();
-                await setPhoneNumber('')
+                await setPhoneNumber('');
               }
             }}
             style={styles.buyButton}>
@@ -328,6 +301,12 @@ const Buy = ({ navigation }) => {
 export default Buy;
 
 const styles = StyleSheet.create({
+  datePickerIcon: {
+    marginLeft: -10,
+    flex: 1,
+    marginRight: 30,
+    marginTop: 20,
+  },
   dateMainView: {
     backgroundColor: '#E0E0E0',
     borderRadius: 10,
@@ -352,10 +331,18 @@ const styles = StyleSheet.create({
     color: '#122E40',
     marginTop: 25,
     marginBottom: 10,
-    
+
     marginLeft: '10%',
   },
-
+mainBorder: {
+  borderColor: '#0004',
+  borderWidth: 1,
+  width: '90%',
+  alignSelf: 'center',
+  borderRadius: 2,
+  marginBottom: -10,
+  marginTop: 5,
+},
   inputBox: {
     backgroundColor: '#E0E0E0',
     borderRadius: 10,
@@ -407,5 +394,20 @@ const styles = StyleSheet.create({
   icon: {
     marginLeft: 4,
     marginRight: 10,
+  },
+  mainView:{
+    borderColor: '#0004',
+    borderWidth: 1,
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 2,
+    marginBottom: -10,
+    marginTop: 5,
+  },
+  expiryText:{
+    marginLeft: 4,
+    fontSize: 16,
+    marginTop: 17,
+    color: 'black',
   },
 });
