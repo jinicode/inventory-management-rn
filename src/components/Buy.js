@@ -46,15 +46,18 @@ const Buy = ({navigation}) => {
   const buyprod = async () => {
     product.forEach(async product => {
       const formdata = new FormData();
+
+    
+
       formdata.append('name', product.name);
-      formdata.append('avg_cost_price', product.price);
+      formdata.append('price', product.price);
       formdata.append('quantity', product.amount);
       formdata.append('name', customerName);
       formdata.append('phone', phoneNumber);
       formdata.append('address', address);
       formdata.append('in_or_out', 'In');
 
-      formdata.append('expiry', product.expiry);
+      formdata.append('expiryDate', product.expiry);
       let myHeaders = new Headers();
       const auth_key = await AsyncStorage.getItem('auth_key');
       myHeaders.append('Authorization', `Token ${auth_key}`);

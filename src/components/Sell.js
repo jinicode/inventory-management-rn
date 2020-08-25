@@ -70,9 +70,11 @@ const Sell = ({navigation}) => {
   const sellprod = async () => {
     await product.forEach(async product => {
       const formData = new FormData();
+     
+
       formData.append('name', product.name);
       formData.append('quantity', parseInt(product.amount));
-      formData.append('latest_selling_price', parseFloat(product.price));
+      formData.append('price', parseFloat(product.price));
       formdata.append('name', customerName);
       formdata.append('phone', phoneNumber);
       formdata.append('address', address);
