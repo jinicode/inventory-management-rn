@@ -23,25 +23,20 @@ import fontSizes from "../constants/fontSizes";
 const HistoryScreen = ({navigation}) => {
   const [transactionlist, setTransactionList] = useState([]);
   const apiFetch = async () => {
-    try {
-      const auth_key = await AsyncStorage.getItem('auth_key');
-      console.log(auth_key);
-      fetch('http://chouhanaryan.pythonanywhere.com/api/transactions/', {
-        method: 'GET',
-        headers: {
-          Authorization: `Token ${auth_key}`,
-        },
-      })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          setTransactionList(data);
-          console.log(transactionlist);
-        })
-        .catch(err => console.log(err));
-    } catch (e) {
-      console.log(e);
-    }
+    const auth_key = await AsyncStorage.getItem('auth_key');
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', 'Token ' + auth_key);
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+fetch("http://chouhanaryan.pythonanywhere.com/api/bill/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
   };
   useEffect(() => {
     console.disableYellowBox = true;
@@ -86,14 +81,14 @@ const HistoryScreen = ({navigation}) => {
               <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }>
             <View>
-              <FlatList
+              {/* <FlatList
               initialNumToRender={10}
                 style={styles.flatlist}
                 data={transactionlist}
                 // scrollEnabled={true}
                 renderItem={({item}) => <HistoryListItem item={item} />}
                 keyExtractor={item => item.id}
-              />
+              /> */}
             </View>
           </ScrollView>
         </Body>
