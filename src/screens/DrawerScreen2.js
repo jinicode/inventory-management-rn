@@ -1,34 +1,26 @@
-import React, {Component} from 'react';
 import {
-  ImageBackground,
-  View,
-  StatusBar,
-  Dimensions,
-  Platform,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-import {
-  Container,
-  Content,
-  Text,
-  Tab,
-  Tabs,
+  Body, Container,
+
+
+
+
   Header,
   Left,
-  Right,
-  Body,
-  Item,
-  Input,
-  Label,
+  Right, Tab,
+  Tabs, Text
 } from 'native-base';
+import React from 'react';
+import {
+  Dimensions,
+
+
+  TouchableOpacity
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import HeaderView from '../components/HeaderView';
+import { appTheme } from '../constants/colors';
 import Buy from './Buy';
 import Sell from './Sell';
-import HeaderView from '../components/HeaderView';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
 
 const deviceHeight = Dimensions.get('window').height;
 

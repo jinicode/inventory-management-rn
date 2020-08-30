@@ -1,15 +1,12 @@
-import React, {Component} from 'react';
-
-import {Dimensions} from 'react-native';
-import {Container, Tab, Tabs} from 'native-base';
-import Icon from 'react-native-vector-icons/Feather';
+import { Container, Tab, Tabs } from 'native-base';
+import React from 'react';
+import { Dimensions } from 'react-native';
 import Buy from '../components/Buy';
-import Sell from '../components/Sell';
-import History from '../components/History';
 import HeaderView from '../components/HeaderView';
-import {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+import History from '../components/History';
+import Sell from '../components/Sell';
+import { appTheme } from '../constants/colors';
+
 
 const deviceHeight = Dimensions.get('window').height;
 

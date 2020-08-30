@@ -1,40 +1,45 @@
-import React, {Component, useState, useEffect} from 'react';
-import Icon from 'react-native-vector-icons/Feather';
+import AsyncStorage from '@react-native-community/async-storage';
 import {
-  Button,
   Body,
-  Input,
-  Container,
-  Content,
-  Header,
-  Right,
-  Left,
-  Item,
-  Label,
-  Card,
-  CardItem,
+
+
+
+
+
+
+
+
+
+  CardItem, Container,
+  Content
 } from 'native-base';
+import React, { useEffect, useState } from 'react';
 import {
-  Alert,
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
+  ActivityIndicator, Alert,
+
+
+
+
+
+
+
+
+  Dimensions, FlatList,
+
+
+  ScrollView, StyleSheet,
+
+
   Text,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Dimensions,
-  ToastAndroid,
-  ActivityIndicator,
+
+
+
+  ToastAndroid, TouchableOpacity, View
 } from 'react-native';
-import Axios from 'axios';
+import Icon from 'react-native-vector-icons/Feather';
 import EmployeeListItem from '../components/EmployeeListItem';
 import HeaderView from '../components/HeaderView';
-import AsyncStorage from '@react-native-community/async-storage';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+import { appTheme } from '../constants/colors';
 
 const EmployeeListScreen = ({navigation}) => {
   const [employeeList, setEmployeeList] = useState([]);

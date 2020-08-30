@@ -1,21 +1,21 @@
-import React, {Component, PureComponent} from 'react';
-import {Body, Container, Content, CardItem} from 'native-base';
-import {
-  Alert,
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  Dimensions,
-  RefreshControl,
-} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import { Body, CardItem, Container, Content } from 'native-base';
+import React, { PureComponent } from 'react';
+import {
+  Dimensions, FlatList,
+
+
+
+
+
+
+  RefreshControl, ScrollView, StyleSheet,
+
+
+  Text, View
+} from 'react-native';
+import { appTheme } from '../constants/colors';
 import HistoryListItem from './HistoryListItem';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
 
 class History extends PureComponent {
   constructor(props) {

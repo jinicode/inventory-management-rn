@@ -1,19 +1,21 @@
-import React from 'react';
 import {
   Body,
-  Input,
+
   Container,
   Content,
-  Item,
-  Label,
-  Icon,
-  Header,
-} from 'native-base';
 
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+
+
+  Header, Input,
+
+
+  Item,
+  Label
+} from 'native-base';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { appTheme } from '../constants/colors';
+
 const RegisterScreen = ({navigation}) => {
   return (
     <Container style={{backgroundColor: appTheme.appgreyBackground}}>

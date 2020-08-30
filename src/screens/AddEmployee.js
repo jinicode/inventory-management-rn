@@ -1,38 +1,26 @@
-import React, {Component} from 'react';
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel,
-} from 'react-native-simple-radio-button';
-import HeaderView from '../components/HeaderView';
-import {
-  Button,
-  Body,
-  Input,
-  Container,
-  Content,
-  Header,
-  Item,
-  Label,
-} from 'native-base';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Dimensions,
-  Picker,
-  Alert,
-} from 'react-native';
-import Axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+import {
+  Body,
+
+  Container,
+  Content, Input,
+
+
+
+  Item,
+  Label
+} from 'native-base';
+import React, { Component } from 'react';
+import {
+  Alert, Picker, ScrollView, StyleSheet,
+
+  Text,
+  TouchableOpacity
+} from 'react-native';
+import RadioForm from 'react-native-simple-radio-button';
+import HeaderView from '../components/HeaderView';
+import { appTheme } from '../constants/colors';
+import { showError, showSuccess } from "../utils/notification";
 
 export default class AddEmployee extends Component {
   constructor(props) {
@@ -69,7 +57,7 @@ export default class AddEmployee extends Component {
       .then(res => {
         console.log(res);
         if (res.status == 201) {
-          Alert.alert('Success!', 'Employee Added Successfully!');
+          showSuccess('Success!', 'Employee Added Successfully!');
         } else {
           this.setState({failed: true});
         }
@@ -276,7 +264,7 @@ export default class AddEmployee extends Component {
                       this.setState({inval_confpass: true});
                     }
                   } else {
-                    Alert.alert('Alert', 'Please enter all the fields');
+                    showError('Please enter all the fields');
                   }
                 }}>
                 <Text style={styles.buttonText}>Register</Text>

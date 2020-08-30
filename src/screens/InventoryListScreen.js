@@ -1,48 +1,59 @@
-import React, {useState, useEffect} from 'react';
-import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel,
-} from 'react-native-simple-radio-button';
-import Icon from 'react-native-vector-icons/Feather';
+import AsyncStorage from '@react-native-community/async-storage';
 import {
-  Button,
   Body,
-  Input,
-  Container,
-  Content,
-  Header,
-  Right,
-  Left,
+
+
+
+
+
+
+  CardItem, Container,
+  Content, Input,
+
+
   Item,
-  Label,
-  Card,
-  CardItem,
+  Label
 } from 'native-base';
+import React, { useEffect, useState } from 'react';
 import {
-  Alert,
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
+  ActivityIndicator, Alert,
+
+
+
+
+
+
+
+
+
+  Dimensions, FlatList,
+
+
+
+
+
+
+
+
+
+  Modal, StyleSheet,
+
+
   Text,
-  StatusBar,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Dimensions,
-  Modal,
-  ActivityIndicator,
-  TextInput,
+
+
+
+
+
+
+  TextInput, TouchableOpacity, View
 } from 'react-native';
 import NumericInput from 'react-native-numeric-input';
-import AsyncStorage from '@react-native-community/async-storage';
+import RadioForm from 'react-native-simple-radio-button';
 import InventoryListItem from '../components/InventoryListItem';
-import HeaderView from '../components/HeaderView';
-import {log} from 'react-native-reanimated';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+import { appTheme } from '../constants/colors';
+import { showSuccess } from "../utils/notification";
+
 
 const InventoryListScreen = ({navigation}) => {
   const [inventoryList, setInventoryList] = useState([]);
@@ -164,7 +175,7 @@ const InventoryListScreen = ({navigation}) => {
         console.log(data);
         setOffset(0);
         getInventoryList(0);
-        Alert.alert('Success!', 'Product Updated');
+       showSuccess('Product Updated');
       })
       .catch(err => console.log(err));
     setUpdateName('');

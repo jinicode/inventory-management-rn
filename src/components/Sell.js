@@ -5,18 +5,11 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
-  Alert,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import axios from 'axios';
 import {
   Container,
   Content,
-  Tab,
-  Tabs,
-  Header,
-  Left,
-  Right,
   Body,
   Item,
   Input,
@@ -26,6 +19,7 @@ import {
 } from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 import colors, {appTheme} from '../constants/colors';
+import { showError, showSuccess } from "../utils/notification";
 import {spacing} from '../constants/dimension';
 import fontSizes from '../constants/fontSizes';
 //http://chouhanaryan.pythonanywhere.com/api/sell/
@@ -93,7 +87,10 @@ const Sell = ({navigation}) => {
         redirect: 'follow',
       })
         .then(response => response.text())
-        .then(result => console.log(result))
+        .then(result => {
+          showSuccess('Products sold successfully.');
+          console.log(result)
+        })
         .catch(error => console.log('error', error));
     });
   };
@@ -276,9 +273,8 @@ const Sell = ({navigation}) => {
                 copy.push({name: '', price: '', quantity: ''});
                 setProduct(copy);
               } else {
-                Alert.alert(
-                  `Please fill all details for product ${product.length}`,
-                );
+                showError(`Please fill all details for product ${product.length}.`);
+                
               }
             }}
             style={styles.addButton}>
@@ -307,16 +303,15 @@ const Sell = ({navigation}) => {
                 }
               }
               if (!all_unique) {
-                console.log('same names');
-                Alert.alert('please select all unique items');
+                
+                showError('Please select all unique items');
               } else if (
                 product[product.length - 1].name == '' ||
                 product[product.length - 1].price == '' ||
                 product[product.length - 1].quantity == ''
               ) {
-                Alert.alert(
-                  `Please fill valid details for product ${product.length}`,
-                );
+                showError(`Please fill valid details for product ${product.length}.`);
+                
               } else {
                 let enough_stock = true;
                 let shortage_products = [];
@@ -336,9 +331,8 @@ const Sell = ({navigation}) => {
                   }
                 }
                 if (!enough_stock) {
-                  Alert.alert(
-                    `Not enough stock in inventory for ${shortage_products}`,
-                  );
+                  showError(`Not enough stock in inventory for ${shortage_products}.`)
+                 
                 } else {
                   console.log('finally sold!!');
                   await sellprod();

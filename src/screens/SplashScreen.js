@@ -1,11 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import {Container, Content, Body} from 'native-base';
-import {StackActions} from '@react-navigation/native';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+import { StackActions } from '@react-navigation/native';
+import { Body, Container, Content } from 'native-base';
+import React from 'react';
+import { Dimensions, Image, StyleSheet } from 'react-native';
+import { appTheme } from '../constants/colors';
 
 export default class SplashScreen extends React.Component {
   componentDidMount = async () => {

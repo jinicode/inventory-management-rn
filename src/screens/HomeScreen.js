@@ -1,13 +1,11 @@
-import React, {useState, useEffect, PureComponent} from 'react';
-import {View, Text, Dimensions, ScrollView, StyleSheet} from 'react-native';
+import React, { useState } from 'react';
+import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
 import HeaderView from '../components/HeaderView';
 import SalesOverTime from '../components/SalesOverTime';
 import SalesPerItem from '../components/SalesPerItem';
+import { appTheme } from '../constants/colors';
 const DEVICE_WIDTH = Dimensions.get('screen').width;
 const DEVICE_HEIGHT = Dimensions.get('screen').height;
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
 
 const screenWidth = Dimensions.get('window').width;
 

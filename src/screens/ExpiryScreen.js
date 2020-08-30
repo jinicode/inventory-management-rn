@@ -1,24 +1,22 @@
-import React, {Component, useState, useEffect, useCallback} from 'react';
-import {useFocusEffect} from '@react-navigation/native';
-
-import axios from 'axios';
-import {Body, Container, Content, CardItem} from 'native-base';
-import {
-  Alert,
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  Dimensions,
-  RefreshControl,
-} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import { Body, CardItem, Container, Content } from 'native-base';
+import React, { useEffect, useState } from 'react';
+import {
+  Dimensions, FlatList,
+
+
+
+
+
+
+  RefreshControl, ScrollView, StyleSheet,
+
+
+  Text, View
+} from 'react-native';
 import ExpiryListItem from '../components/ExpiryListItem';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+import { appTheme } from '../constants/colors';
+
 
 const ExpiryScreen = ({navigation}) => {
   const [expiryList, setExpiryList] = useState([]);

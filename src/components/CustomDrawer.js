@@ -1,13 +1,9 @@
 import {
   DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
+  DrawerItemList
 } from '@react-navigation/drawer';
-import React, {Component} from 'react';
-import {Dimensions, StyleSheet, Image} from 'react-native';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+import React from 'react';
+import { Dimensions, Image, StyleSheet } from 'react-native';
 const drawerCover = require('../Images/store-inventory-logo.jpg');
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;

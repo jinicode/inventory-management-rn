@@ -1,36 +1,8 @@
-import React, {Component} from 'react';
+import { CardItem } from 'native-base';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Foundation';
-import {
-  Button,
-  Body,
-  Input,
-  Container,
-  Content,
-  Header,
-  Right,
-  Left,
-  Item,
-  Label,
-  Card,
-  CardItem,
-  ActionSheet,
-} from 'native-base';
-import {
-  Alert,
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Dimensions,
-} from 'react-native';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+import { appTheme } from '../constants/colors';
 
 export default class EmployeeListItem extends React.Component {
   componentDidMount() {

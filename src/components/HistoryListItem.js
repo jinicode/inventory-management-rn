@@ -1,20 +1,20 @@
-import React, {Component} from 'react';
-import {CardItem} from 'native-base';
+import { CardItem } from 'native-base';
+import React from 'react';
 import {
-  StyleSheet,
-  ScrollView,
-  View,
+  AsyncStorage, PermissionsAndroid,
+  Platform, StyleSheet,
+
+
   Text,
-  PermissionsAndroid,
-  Platform,
-  AsyncStorage,
-  TouchableOpacity,
+
+
+
+  TouchableOpacity, View
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import RNFetchBlob from 'rn-fetch-blob';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+import { appTheme } from '../constants/colors';
+import { showError } from "../utils/notification";
 
 export default class HistoryListItem extends React.Component {
   componentDidMount() {
@@ -81,7 +81,7 @@ export default class HistoryListItem extends React.Component {
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         this.actualDownload(id);
       } else {
-        Alert.alert(
+        showError(
           'Permission Denied!',
           'You need to give storage permission to download the file',
         );

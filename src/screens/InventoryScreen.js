@@ -1,12 +1,10 @@
+import { Container, Tab, Tabs } from 'native-base';
 import React from 'react';
-import {Dimensions} from 'react-native';
-import {Container, Tab, Tabs} from 'native-base';
-import InventoryListScreen from './InventoryListScreen';
-import ExpiryScreen from './ExpiryScreen';
+import { Dimensions } from 'react-native';
 import HeaderView from '../components/HeaderView';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+import { appTheme } from '../constants/colors';
+import ExpiryScreen from './ExpiryScreen';
+import InventoryListScreen from './InventoryListScreen';
 
 const deviceHeight = Dimensions.get('window').height;
 

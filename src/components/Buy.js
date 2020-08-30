@@ -1,35 +1,22 @@
-import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Dimensions,
-  Alert,
-  Button,
-} from 'react-native';
-import {
-  Container,
-  Content,
-  Tab,
-  Tabs,
-  Header,
-  Left,
-  Right,
-  Body,
-  Item,
-  Input,
-  Label,
-  Form,
-} from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {ScrollView} from 'react-native-gesture-handler';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import axios from 'axios';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+import {
+  Body, Container,
+
+
+  Input, Item,
+
+  Label
+} from 'native-base';
+import React, { useEffect, useState } from 'react';
+import {
+  Dimensions, StyleSheet, Text,
+  TouchableOpacity, View
+} from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { appTheme } from '../constants/colors';
+import { showError, showSuccess } from "../utils/notification";
 
 const Buy = ({navigation}) => {
   const [product, setProduct] = useState([]);
@@ -95,8 +82,13 @@ const Buy = ({navigation}) => {
         redirect: 'follow',
       })
         .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
+        .then(data => {
+          console.log(data)
+        showSuccess('Items purchases successfully.');
+        })
+        .catch(err => {
+          showError('Error in buying items')
+          console.log(err)});
     });
   };
 
@@ -268,9 +260,8 @@ const Buy = ({navigation}) => {
                 dates_copy.push(new Date());
                 setDate_array(dates_copy);
               } else {
-                Alert.alert(
-                  `Please fill all details for product ${product.length}`,
-                );
+                showError( `Please fill all details for product ${product.length}`)
+                
               }
             }}
             style={styles.addButton}>
@@ -300,8 +291,8 @@ const Buy = ({navigation}) => {
                 }
               }
               if (!can_buy) {
-                Alert.alert(
-                  `Please fill valid details for product ${incomplete_product_index}`,
+               showError(
+                  `Please fill valid details for product ${incomplete_product_index}`
                 );
               } else {
                 await buyprod();

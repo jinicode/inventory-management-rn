@@ -1,22 +1,18 @@
-import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  Alert,
-  ActivityIndicator,
-} from 'react-native';
-import {Body, Input, Label, Header, Left} from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
-import Icon from 'react-native-vector-icons/Feather';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+import { Body, Header, Input, Label, Left } from 'native-base';
+import React, { useEffect, useState } from 'react';
+import {
+  ActivityIndicator, ScrollView,
+  StyleSheet, Text,
 
-import {isTokenValid} from '../utils/isTokenValid';
-import {logout} from '../utils/logout';
+
+  TouchableOpacity, View
+} from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
+import { appTheme } from '../constants/colors';
+import { isTokenValid } from '../utils/isTokenValid';
+import { logout } from '../utils/logout';
+import { showError, showSuccess } from "../utils/notification";
 
 const ProfilePage = ({navigation}) => {
   const [editMode, toggleEditMode] = useState(false);
@@ -82,9 +78,9 @@ const ProfilePage = ({navigation}) => {
   const onSavePressed = async () => {
     // validation
     if (firstName === '' || lastName === '' || age === '') {
-      if (firstName === '') Alert.alert('please enter firstName');
-      else if (lastName === '') Alert.alert('please enter lastName');
-      else if (age === '') Alert.alert('please enter age');
+      if (firstName === '') showError('Please enter firstName.');
+      else if (lastName === '') showError('Please enter lastName.');
+      else if (age === '') showError('Please enter age.');
     } else {
       try {
         let formData = new FormData();
@@ -110,9 +106,9 @@ const ProfilePage = ({navigation}) => {
         const resJson = await res.json();
         console.log(resJson);
         if (res.status === 200) {
-          Alert.alert('details updated');
+        showSuccess('Details updated.');
         } else {
-          Alert.alert('Error in updating details');
+          showError('Error in updating details');
         }
         toggleEditMode(!editMode);
       } catch (err) {

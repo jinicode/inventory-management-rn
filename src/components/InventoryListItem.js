@@ -1,35 +1,13 @@
-import React, {Component} from 'react';
-import Icon from 'react-native-vector-icons/Feather';
+import { CardItem } from 'native-base';
+import React from 'react';
 import {
-  Button,
-  Body,
-  Input,
-  Container,
-  Content,
-  Header,
-  Right,
-  Left,
-  Item,
-  Label,
-  Card,
-  CardItem,
-} from 'native-base';
-import {
-  Alert,
-  FlatList,
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
-  View,
+
   Text,
-  StatusBar,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Dimensions,
+  TouchableOpacity, View
 } from 'react-native';
-import colors, {appTheme} from '../constants/colors';
-import {spacing} from '../constants/dimension';
-import fontSizes from '../constants/fontSizes';
+import Icon from 'react-native-vector-icons/Feather';
+import { appTheme } from '../constants/colors';
 
 export default class InventoryListItem extends React.Component {
   componentDidMount() {

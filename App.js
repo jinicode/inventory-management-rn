@@ -1,10 +1,11 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
+import {StatusBar,UIManager} from 'react-native';
 import FlashMessage from "react-native-flash-message";
 import {
   NavigationContainer,
   DarkTheme,
   DefaultTheme,
+  
 } from '@react-navigation/native';
 import {createStackNavigator, HeaderTitle} from '@react-navigation/stack';
 import Icon_Feather from 'react-native-vector-icons/Feather';
@@ -27,6 +28,13 @@ import RegisterScreen from './src/screens/RegisterScreen';
 const AppStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const EmployeeStack = createStackNavigator();
+
+
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 
 const App = ({navigation}) => {
   return (
@@ -73,7 +81,8 @@ const App = ({navigation}) => {
           }}
         />
       </AppStack.Navigator>
-      <FlashMessage position="top" />
+      <FlashMessage position="top" floating={true}
+      titleStyle={{fontSize: fontSizes.h2}} />
     </NavigationContainer>
   );
 };
