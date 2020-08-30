@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Dimensions} from 'react-native';
 import {Container, Tab, Tabs} from 'native-base';
-import Icon from 'react-native-vector-icons/Feather';
 import InventoryListScreen from './InventoryListScreen';
 import ExpiryScreen from './ExpiryScreen';
 import HeaderView from '../components/HeaderView';

@@ -477,16 +477,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingLeft: 6,
     fontWeight: 'bold',
-    // marginLeft: 50
+    
   },
   itemsHeader: {
-    // flex: 0.2,
+    
     fontSize: 18,
     fontWeight: 'bold',
-    // marginLeft: 30
+    
   },
   priceHeader: {
-    // flex: 0.15,
+    
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -498,13 +498,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: 'row',
     alignSelf: 'center',
-    // position:'fixed',
+    
   },
   addEmployeeButtonText: {
     color: appTheme.textPrimary,
     fontWeight: 'bold',
     textAlignVertical: 'center',
-    // padding:6,
+    
   },
   centeredView: {
     flex: 1,

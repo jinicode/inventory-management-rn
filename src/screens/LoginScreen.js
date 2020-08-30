@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   Body,
   Input,
@@ -6,7 +6,6 @@ import {
   Content,
   Item,
   Label,
-  Icon,
   Header,
 } from 'native-base';
 import {
@@ -14,12 +13,10 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  KeyboardAvoidingView,
   Image,
   Alert,
-  View,
 } from 'react-native';
-import Axios from 'axios';
+
 import AsyncStorage from '@react-native-community/async-storage';
 import colors, {appTheme} from '../constants/colors';
 import {spacing} from '../constants/dimension';
@@ -142,15 +139,6 @@ const LoginScreen = ({navigation}) => {
               secureTextEntry
             />
           </Item>
-
-          {/* <TouchableOpacity
-            rounded
-            style={styles.loginButton}
-            onPress={() => {
-              Login(email, password);
-            }}>
-            <Text style={styles.buttonText}>Login</Text>
-          </TouchableOpacity> */}
 
           <TouchableOpacity
             rounded

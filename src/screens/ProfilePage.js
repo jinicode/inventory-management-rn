@@ -1,26 +1,14 @@
-import React, {useState, useEffect, PureComponent} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
-  Dimensions,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
   Alert,
   ActivityIndicator,
-  CheckBox,
 } from 'react-native';
-import {
-  Button,
-  Body,
-  Input,
-  Container,
-  Radio,
-  Label,
-  Header,
-  Left,
-  Right,
-} from 'native-base';
+import {Body, Input, Label, Header, Left} from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/Feather';
 import colors, {appTheme} from '../constants/colors';
@@ -104,7 +92,6 @@ const ProfilePage = ({navigation}) => {
         formData.append('first_name', firstName);
         formData.append('last_name', lastName);
         formData.append('age', age);
-        // console.log(formData)
 
         const auth_key = await AsyncStorage.getItem('auth_key');
 
@@ -184,7 +171,6 @@ const ProfilePage = ({navigation}) => {
                 style={
                   editMode ? styles.inputAreaEditMode : styles.inputAreaViewMode
                 }
-                // placeholder="Username"
                 value={firstName}
                 disabled={editMode ? false : true}
                 onChangeText={val => updateFirstName(val.trim())}
@@ -197,7 +183,6 @@ const ProfilePage = ({navigation}) => {
                 style={
                   editMode ? styles.inputAreaEditMode : styles.inputAreaViewMode
                 }
-                // placeholder="Username"
                 value={lastName}
                 disabled={editMode ? false : true}
                 onChangeText={val => updateLastName(val.trim())}
@@ -208,7 +193,6 @@ const ProfilePage = ({navigation}) => {
               <Label style={styles.label}>Email</Label>
               <Input
                 style={styles.inputAreaViewMode}
-                // placeholder="Username"
                 value={email}
                 disabled={true}
               />
@@ -219,7 +203,6 @@ const ProfilePage = ({navigation}) => {
 
               <Input
                 style={styles.inputAreaViewMode}
-                // placeholder="Username"
                 value={gender}
                 disabled={true}
               />
@@ -295,7 +278,6 @@ const styles = StyleSheet.create({
     color: appTheme.appBlue,
   },
   editButton: {
-    // flex: 0.6,
     borderColor: appTheme.appBlue,
     borderWidth: 2,
     width: 200,
@@ -314,7 +296,6 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
   },
   saveButton: {
-    // flex: 0.4,
     borderColor: appTheme.appBlue,
     borderWidth: 2,
     borderRadius: 10,
@@ -323,9 +304,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     marginHorizontal: 60,
 
-    // flexDirection: 'row',
     alignItems: 'center',
-    // justifyContent: 'center',
   },
   inputAreaEditMode: {
     backgroundColor: appTheme.darkGrey,
@@ -336,19 +315,18 @@ const styles = StyleSheet.create({
 
     fontSize: 20,
     height: 55,
-    // width: '60%'
   },
   inputAreaViewMode: {
     backgroundColor: 'transparent',
-    // backgroundColor:'green',
+
     borderRadius: 10,
     marginRight: 28,
     marginLeft: 28,
     textAlign: 'center',
-    // marginVertical: 10,
+
     fontSize: 20,
     height: 55,
-    // flexDirection: 'row',
+
     flex: 1,
   },
   radioGroup: {
@@ -375,10 +353,8 @@ const styles = StyleSheet.create({
     backgroundColor: appTheme.appBlue,
     marginHorizontal: 100,
     paddingVertical: 10,
-    // paddingHorizontal: ,
+
     borderRadius: 10,
-    // flexDirection: 'row',
-    // position:'fixed',
   },
   logoutText: {
     color: appTheme.textPrimary,

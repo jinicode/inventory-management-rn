@@ -65,8 +65,6 @@ const DEVICE_WIDTH = Dimensions.get('screen').width;
 const DEVICE_HEIGHT = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // backgroundColor:'blue',
     height: DEVICE_HEIGHT,
     width: DEVICE_WIDTH,
     justifyContent: 'center',
@@ -79,7 +77,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 65,
     lineHeight: 50,
-    // marginBottom: 10,
-    // marginBottom: 10,
   },
 });

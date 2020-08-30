@@ -1,42 +1,10 @@
 import React, {useState, useEffect, PureComponent} from 'react';
-import {
-  View,
-  Text,
-  Button,
-  Dimensions,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
-import {
-  Body,
-  Input,
-  Container,
-  Content,
-  Item,
-  Label,
-  Icon,
-  Header,
-} from 'native-base';
-import {
-  LineChart,
-  BarChart,
-  PieChart,
-  ProgressChart,
-  ContributionGraph,
-  StackedBarChart,
-} from 'react-native-chart-kit';
-import AsyncStorage from '@react-native-community/async-storage';
+import {View, Text, Dimensions, ScrollView, StyleSheet} from 'react-native';
 import HeaderView from '../components/HeaderView';
-import ProfitChart from '../components/ProfitChart';
-import MostSoldChart from '../components/MostSoldChart';
-import LeastSoldChart from '../components/LeastSoldChart';
 import SalesOverTime from '../components/SalesOverTime';
 import SalesPerItem from '../components/SalesPerItem';
 const DEVICE_WIDTH = Dimensions.get('screen').width;
 const DEVICE_HEIGHT = Dimensions.get('screen').height;
-import isAuthenticated from '../utils/isAuthenticated';
 import colors, {appTheme} from '../constants/colors';
 import {spacing} from '../constants/dimension';
 import fontSizes from '../constants/fontSizes';

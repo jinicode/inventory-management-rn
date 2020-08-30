@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect} from 'react';
+import React from 'react';
 import {
   Body,
   Input,
@@ -9,19 +9,8 @@ import {
   Icon,
   Header,
 } from 'native-base';
-import HeaderView from '../components/HeaderView';
-import {
-  StyleSheet,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Image,
-  Alert,
-  View,
-} from 'react-native';
-import Axios from 'axios';
-import AsyncStorage from '@react-native-community/async-storage';
+
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import colors, {appTheme} from '../constants/colors';
 import {spacing} from '../constants/dimension';
 import fontSizes from '../constants/fontSizes';
