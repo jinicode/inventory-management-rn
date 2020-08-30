@@ -20,6 +20,7 @@ import {
   Item,
   Input,
   Label,
+  Form,
 } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -43,19 +44,86 @@ const Buy = ({navigation}) => {
     setDate_array([new Date()]);
   }, []);
 
+
+  const finalPost = async () => {
+
+    console.log('PRODUCT IN FINALPOST')
+    console.log(product);
+    console.log('PRODUCT IN FINALPOST')
+    
+    // let myHeaders = new Headers();
+    // myHeaders.append('Authorization', `Token ${auth_key}`);
+    // myHeaders.append('Content-Type', 'application/json');
+
+    
+    // const form = new FormData();
+    // formdata.append('name', product.name);
+    // formdata.append('quantity', product.amount);
+    // formdata.append('avg_cost_price', product.price);
+    // formdata.append('expiry', product.expiry);
+    
+    // console.log(object);
+    
+    const auth_key = await AsyncStorage.getItem('auth_key');
+    console.log('--------------------------')
+    console.log(auth_key);
+    console.log('--------------------------')
+    console.log(product);
+    let object = {
+      name: customerName,
+      phone: phoneNumber,
+      address: address,
+      in_or_out: 'In',
+      order: {...product}
+    }
+    console.log('--------------------------')
+    console.log(object);
+    console.log('--------------------------')
+    fetch('http://chouhanaryan.pythonanywhere.com/api/order/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': "Token " + auth_key,
+      },
+      body: object
+    })
+    .then((res) => {
+      console.log(res);
+      return res.json()
+    })
+    .then((data) => {
+      console.log(data)
+    })
+    .catch((err) => console.log(err))
+  }
+
   const buyprod = async () => {
+
+    console.log('PRODUCT IN BUYPROD')
+    console.log(product);
+    console.log('PRODUCT IN BUYPROD')
+
     product.forEach(async product => {
       const formdata = new FormData();
 
     
 
       formdata.append('name', product.name);
-      formdata.append('price', product.price);
       formdata.append('quantity', product.amount);
+      formdata.append('avg_cost_price', product.price);
       formdata.append('expiry', product.expiry);
+      
+      // formdata.append('price', product.price);
+      // formdata.append('name', customerName);
+      // formdata.append('phone', phoneNumber);
+      // formdata.append('address', address);
+      // formdata.append('in_or_out', 'In');
+      // formdata.append('expiryDate', product.expiry);
+
       let myHeaders = new Headers();
       const auth_key = await AsyncStorage.getItem('auth_key');
       myHeaders.append('Authorization', `Token ${auth_key}`);
+      // myHeaders.append('Content-Type', 'application/json');
 
       fetch('http://chouhanaryan.pythonanywhere.com/api/buy/', {
         method: 'POST',
@@ -63,9 +131,15 @@ const Buy = ({navigation}) => {
         body: formdata,
         redirect: 'follow',
       })
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+      .then((res) => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
     });
+
+
+
+
+
   };
 
   const set_date = e => {
@@ -273,6 +347,7 @@ const Buy = ({navigation}) => {
                 );
               } else {
                 await buyprod();
+                await finalPost();
                 await setProduct([]);
                 await setProduct([{name: '', price: 0, amount: 0, expiry: ''}]);
                 await setDate_array([new Date()]);
