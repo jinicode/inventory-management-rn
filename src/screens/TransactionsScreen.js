@@ -7,6 +7,9 @@ import Buy from '../components/Buy';
 import Sell from '../components/Sell';
 import History from '../components/History';
 import HeaderView from '../components/HeaderView';
+import colors, {appTheme} from "../constants/colors";
+import {spacing} from "../constants/dimension";
+import fontSizes from "../constants/fontSizes";
 
 const deviceHeight = Dimensions.get('window').height;
 

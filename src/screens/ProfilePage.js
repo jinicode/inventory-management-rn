@@ -7,6 +7,9 @@ import {
     Header, Left, Right,
 } from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
+import colors, {appTheme} from "../constants/colors";
+import {spacing} from "../constants/dimension";
+import fontSizes from "../constants/fontSizes";
 
 import { isTokenValid } from '../utils/isTokenValid'
 import { logout } from '../utils/logout'

@@ -40,6 +40,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 import InventoryListItem from '../components/InventoryListItem';
 import HeaderView from '../components/HeaderView';
 import {log} from 'react-native-reanimated';
+import colors, {appTheme} from "../constants/colors";
+import {spacing} from "../constants/dimension";
+import fontSizes from "../constants/fontSizes";
 
 const InventoryListScreen = ({navigation}) => {
   const [inventoryList, setInventoryList] = useState([]);

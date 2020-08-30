@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Header, Left, Right, Body } from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
-
+import colors, {appTheme} from "../constants/colors";
+import {spacing} from "../constants/dimension";
+import fontSizes from "../constants/fontSizes";
 
 const HeaderView = ({ navigation,title }) => {
   return (

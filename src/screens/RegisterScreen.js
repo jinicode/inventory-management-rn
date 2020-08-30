@@ -22,6 +22,9 @@ import {
 } from 'react-native';
 import Axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
+import colors, {appTheme} from "../constants/colors";
+import {spacing} from "../constants/dimension";
+import fontSizes from "../constants/fontSizes";
 const RegisterScreen = ({navigation}) => {
   return (
     <Container style={{backgroundColor: '#F3F9FB'}}>

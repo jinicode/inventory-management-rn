@@ -37,6 +37,9 @@ import SalesPerItem from '../components/SalesPerItem';
 const DEVICE_WIDTH = Dimensions.get('screen').width;
 const DEVICE_HEIGHT = Dimensions.get('screen').height;
 import isAuthenticated from '../utils/isAuthenticated';
+import colors, {appTheme} from "../constants/colors";
+import {spacing} from "../constants/dimension";
+import fontSizes from "../constants/fontSizes";
 
 const screenWidth = Dimensions.get('window').width;
 

@@ -25,6 +25,9 @@ import {
   Form,
 } from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
+import colors, {appTheme} from "../constants/colors";
+import {spacing} from "../constants/dimension";
+import fontSizes from "../constants/fontSizes";
 //http://chouhanaryan.pythonanywhere.com/api/sell/
 
 const Sell = ({navigation}) => {

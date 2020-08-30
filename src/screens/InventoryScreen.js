@@ -5,6 +5,9 @@ import Icon from 'react-native-vector-icons/Feather';
 import InventoryListScreen from './InventoryListScreen';
 import ExpiryScreen from './ExpiryScreen'
 import HeaderView from '../components/HeaderView';
+import colors, {appTheme} from "../constants/colors";
+import {spacing} from "../constants/dimension";
+import fontSizes from "../constants/fontSizes";
 
 const deviceHeight = Dimensions.get('window').height;
 

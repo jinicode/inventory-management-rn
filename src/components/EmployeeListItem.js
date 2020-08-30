@@ -23,6 +23,9 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Dimensions,} from 'react-native';
+  import colors, {appTheme} from "../constants/colors";
+import {spacing} from "../constants/dimension";
+import fontSizes from "../constants/fontSizes";
 
 export default class EmployeeListItem extends React.Component {
   componentDidMount() {

@@ -1,5 +1,8 @@
 
 import PushNotification from 'react-native-push-notification';
+import colors, {appTheme} from "../constants/colors";
+import {spacing} from "../constants/dimension";
+import fontSizes from "../constants/fontSizes";
 
 export default function Notification() {
   PushNotification.configure({

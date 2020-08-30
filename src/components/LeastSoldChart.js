@@ -6,6 +6,9 @@ import {
   SCLAlert,
   SCLAlertButton
 } from 'react-native-scl-alert'
+import colors, {appTheme} from "../constants/colors";
+import {spacing} from "../constants/dimension";
+import fontSizes from "../constants/fontSizes";
 
 const blueImage = require('../Images/file_blue.png')
 
