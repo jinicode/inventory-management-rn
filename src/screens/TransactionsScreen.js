@@ -1,12 +1,11 @@
-import { Container, Tab, Tabs } from 'native-base';
+import {Container, Tab, Tabs} from 'native-base';
 import React from 'react';
-import { Dimensions } from 'react-native';
+import {Dimensions} from 'react-native';
 import Buy from '../components/Buy';
 import HeaderView from '../components/HeaderView';
 import History from '../components/History';
 import Sell from '../components/Sell';
-import { appTheme } from '../constants/colors';
-
+import {appTheme} from '../constants/colors';
 
 const deviceHeight = Dimensions.get('window').height;
 

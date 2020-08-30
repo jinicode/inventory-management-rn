@@ -1,22 +1,18 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {Body, Container, Input, Item, Label} from 'native-base';
+import React, {useEffect, useState} from 'react';
 import {
-  Body, Container,
-
-
-  Input, Item,
-
-  Label
-} from 'native-base';
-import React, { useEffect, useState } from 'react';
-import {
-  Dimensions, StyleSheet, Text,
-  TouchableOpacity, View
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { appTheme } from '../constants/colors';
-import { showError, showSuccess } from "../utils/notification";
+import {appTheme} from '../constants/colors';
+import {showError, showSuccess} from '../utils/notification';
 
 const Buy = ({navigation}) => {
   const [product, setProduct] = useState([]);
@@ -83,12 +79,13 @@ const Buy = ({navigation}) => {
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data)
-        showSuccess('Items purchases successfully.');
+          console.log(data);
+          showSuccess('Items purchases successfully.');
         })
         .catch(err => {
-          showError('Error in buying items')
-          console.log(err)});
+          showError('Error in buying items');
+          console.log(err);
+        });
     });
   };
 
@@ -260,8 +257,9 @@ const Buy = ({navigation}) => {
                 dates_copy.push(new Date());
                 setDate_array(dates_copy);
               } else {
-                showError( `Please fill all details for product ${product.length}`)
-                
+                showError(
+                  `Please fill all details for product ${product.length}`,
+                );
               }
             }}
             style={styles.addButton}>
@@ -291,8 +289,8 @@ const Buy = ({navigation}) => {
                 }
               }
               if (!can_buy) {
-               showError(
-                  `Please fill valid details for product ${incomplete_product_index}`
+                showError(
+                  `Please fill valid details for product ${incomplete_product_index}`,
                 );
               } else {
                 await buyprod();
