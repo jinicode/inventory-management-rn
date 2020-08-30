@@ -16,16 +16,21 @@ import {
   ActionSheet,
 } from 'native-base';
 import {
-  Alert, FlatList, SafeAreaView,
-  StyleSheet, ScrollView,
-  View,Text,
+  Alert,
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
   StatusBar,
   TouchableOpacity,
   KeyboardAvoidingView,
-  Dimensions,} from 'react-native';
-  import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+  Dimensions,
+} from 'react-native';
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 export default class EmployeeListItem extends React.Component {
   componentDidMount() {
@@ -73,7 +78,7 @@ const listItemStyles = StyleSheet.create({
   },
   icon: {
     paddingRight: 12,
-    flex: 0.10,
+    flex: 0.1,
   },
   name: {
     textAlign: 'left',
@@ -85,20 +90,16 @@ const listItemStyles = StyleSheet.create({
     flex: 0.25,
     fontSize: 16,
     marginHorizontal: 4,
-
   },
   email: {
     flex: 0.3,
     fontSize: 13,
     paddingHorizontal: 4,
     flexWrap: 'wrap',
-
   },
   age: {
     flex: 0.1,
     fontSize: 15,
     paddingLeft: 10,
-
   },
-
 });

@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Dimensions, processColor, View, Text } from 'react-native';
-import { LineChart } from 'react-native-charts-wrapper';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, Dimensions, processColor, View, Text} from 'react-native';
+import {LineChart} from 'react-native-charts-wrapper';
 import AsyncStorage from '@react-native-community/async-storage';
-import { Picker, Form, Content } from 'native-base';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import {Picker, Form, Content} from 'native-base';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 const Functional = () => {
   const [min_Vis, setMin_Vis] = useState(0);
   const [max_vis, setMax_vis] = useState(10);
-
 
   let datasetObject;
   let dataSetsValue = [];
@@ -55,9 +54,9 @@ const Functional = () => {
   const get_data = async () => {
     const auth_key = await AsyncStorage.getItem('auth_key');
     fetch('http://chouhanaryan.pythonanywhere.com/api/profit/', {
-      headers: { Authorization: `Token ${auth_key}` },
+      headers: {Authorization: `Token ${auth_key}`},
     })
-      .then((res) => res.json())
+      .then(res => res.json())
       .then(data => {
         // this temp variable is a dummy data object which is being used because it has more months in its data
         // const total = temp;
@@ -66,7 +65,7 @@ const Functional = () => {
         const total = data;
 
         const my_data = Object.keys(total).map(key => {
-          return { month: key, value: total[key] };
+          return {month: key, value: total[key]};
         });
         setFinalData(my_data);
         setMax_vis(my_data.length);
@@ -80,7 +79,6 @@ const Functional = () => {
 
   let dummy_time = [];
 
-
   // for x axis values
   for (let i = 0; i < finalData.length; i++) {
     // console.log(i)
@@ -93,11 +91,10 @@ const Functional = () => {
   // for y axis values
   for (let i = 0; i < finalData.length; i++) {
     if (finalData[i].month != 'Total')
-      valueLegend.push({ y: finalData[i].value.Total[dropdownSelect] });
+      valueLegend.push({y: finalData[i].value.Total[dropdownSelect]});
   }
 
   let time = dummy_time;
-
 
   legendStyle = {
     enabled: true,
@@ -130,8 +127,6 @@ const Functional = () => {
     textColor: processColor(appTheme.textPrimary),
   };
 
-
-
   datasetObject = {
     values: valueLegend,
     // label: 'Total profit',
@@ -153,41 +148,39 @@ const Functional = () => {
 
   const renderLine = () => {
     return (
-      <View style={{ alignItems: 'center' }}>
-        <Content style={{ height: 100, marginTop: -70 }}>
+      <View style={{alignItems: 'center'}}>
+        <Content style={{height: 100, marginTop: -70}}>
           <Form
             style={{
               borderWidth: 1,
               borderColor: 'black',
               flex: 0.8,
               borderRadius: 5,
-              marginTop: 70
+              marginTop: 70,
             }}>
             <Picker
               note
-              style={{ borderColor: 'black', borderWidth: 1, width: 200 }}
-              mode='dropdown'
+              style={{borderColor: 'black', borderWidth: 1, width: 200}}
+              mode="dropdown"
               selectedValue={dropdownSelect}
-              onValueChange={(value, index) => setDropdownSelect(value)}
-            >
+              onValueChange={(value, index) => setDropdownSelect(value)}>
               <Picker.Item label="Earned" value="earned" />
               <Picker.Item label="Spent" value="spent" />
             </Picker>
           </Form>
         </Content>
-        <TouchableOpacity onPress={() => console.log(dropdownSelect)}>
-        </TouchableOpacity>
+        <TouchableOpacity onPress={() => console.log(dropdownSelect)} />
         <LineChart
           style={styles.bar}
           visibleRange={{
-            x: { min: 0, max: 10 },
+            x: {min: 0, max: 10},
           }}
           autoScaleMinMaxEnabled={false}
           animation={{
             durationX: 300,
           }}
           data={dataStyle}
-          chartDescription={{ text: '' }}
+          chartDescription={{text: ''}}
           legend={legendStyle}
           marker={markers}
           xAxis={xAxisStyle}

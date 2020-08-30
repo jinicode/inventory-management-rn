@@ -3,11 +3,11 @@ import {Dimensions} from 'react-native';
 import {Container, Tab, Tabs} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 import InventoryListScreen from './InventoryListScreen';
-import ExpiryScreen from './ExpiryScreen'
+import ExpiryScreen from './ExpiryScreen';
 import HeaderView from '../components/HeaderView';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 const deviceHeight = Dimensions.get('window').height;
 
@@ -18,7 +18,6 @@ const TransactionsScreen = ({navigation}) => {
 
       <Tabs>
         <Tab
-          
           activeTabStyle={{backgroundColor: appTheme.appBlue}}
           tabStyle={{backgroundColor: appTheme.appBlue}}
           textStyle={{color: appTheme.textPrimary}}
@@ -34,7 +33,6 @@ const TransactionsScreen = ({navigation}) => {
           heading="Near expiry">
           <ExpiryScreen />
         </Tab>
-
       </Tabs>
     </Container>
   );

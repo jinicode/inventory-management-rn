@@ -40,9 +40,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 import InventoryListItem from '../components/InventoryListItem';
 import HeaderView from '../components/HeaderView';
 import {log} from 'react-native-reanimated';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 const InventoryListScreen = ({navigation}) => {
   const [inventoryList, setInventoryList] = useState([]);
@@ -147,7 +147,7 @@ const InventoryListScreen = ({navigation}) => {
     formData.append('name', updateName);
     formData.append('latest_selling_price', updateSellPrice);
     const auth_key = await AsyncStorage.getItem('auth_key');
-    console.log(formData,"form");
+    console.log(formData, 'form');
 
     fetch(
       `http://chouhanaryan.pythonanywhere.com/api/update/${updateProd.id}/`,
@@ -185,7 +185,7 @@ const InventoryListScreen = ({navigation}) => {
   };
 
   const onMenuPressed = inventoryItem => {
-    console.log(inventoryItem,"Item");
+    console.log(inventoryItem, 'Item');
     Alert.alert(
       `${inventoryItem.name} (Qty: ${inventoryItem.quantity})`,
       `Rs. ${inventoryItem.avg_cost_price}`,
@@ -255,7 +255,7 @@ const InventoryListScreen = ({navigation}) => {
                   style={styles.inputArea}
                   value={updateSellPrice}
                   onChangeText={value => {
-                    console.log(typeof(value))
+                    console.log(typeof value);
                     setUpdateSellPrice(value);
                   }}
                   keyboardType="numeric"
@@ -333,7 +333,7 @@ const InventoryListScreen = ({navigation}) => {
               formHorizontal={true}
               buttonColor={'black'}
               labelColor={'black'}
-              initial={(updateProd.loose===true)?0:1}
+              initial={updateProd.loose === true ? 0 : 1}
               labelStyle={{marginRight: 20}}
               style={{paddingLeft: 10, marginTop: 8}}
               onPress={value => {
@@ -418,7 +418,9 @@ const InventoryListScreen = ({navigation}) => {
             onEndReachedThreshold={!isSearch && 0.2}
             ListFooterComponent={() => {
               if (isLoading) {
-                return <ActivityIndicator size="large" color={appTheme.labelColor} />;
+                return (
+                  <ActivityIndicator size="large" color={appTheme.labelColor} />
+                );
               }
               return null;
             }}
@@ -444,7 +446,6 @@ const styles = StyleSheet.create({
     marginVertical: 16,
     borderRadius: 20,
     width: DEVICE_WIDTH - 32,
-   
   },
   flatlist: {
     width: DEVICE_WIDTH - 32,
@@ -454,7 +455,7 @@ const styles = StyleSheet.create({
   },
   tableHeader: {
     backgroundColor: appTheme.tableHeader,
-    
+
     width: DEVICE_WIDTH - 32,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,

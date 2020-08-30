@@ -1,8 +1,7 @@
-
 import PushNotification from 'react-native-push-notification';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 export default function Notification() {
   PushNotification.configure({
@@ -47,7 +46,8 @@ export default function Notification() {
     autoCancel: true, // (optional) default: true
     largeIcon: 'ic_launcher', // (optional) default: "ic_launcher"
     smallIcon: 'ic_notification', // (optional) default: "ic_notification" with fallback for "ic_launcher"
-    bigText: 'We need to keep up with the demands of consumers! Make sure the stocks of maggi are filled immediately', // (optional) default: "message" prop
+    bigText:
+      'We need to keep up with the demands of consumers! Make sure the stocks of maggi are filled immediately', // (optional) default: "message" prop
     subText: 'STOCK WARNING', // (optional) default: none
     color: '#00ccff', // (optional) default: system default
     vibrate: true, // (optional) default: true

@@ -16,9 +16,9 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import ExpiryListItem from '../components/ExpiryListItem';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 const ExpiryScreen = ({navigation}) => {
   const [expiryList, setExpiryList] = useState([]);
@@ -62,7 +62,7 @@ const ExpiryScreen = ({navigation}) => {
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     apiFetch();
-     setRefreshing(false)
+    setRefreshing(false);
   }, []);
   return (
     <Container style={{backgroundColor: appTheme.appgreyBackground}}>
@@ -87,21 +87,21 @@ const ExpiryScreen = ({navigation}) => {
           </View>
 
           {/* the inner list */}
-{count>0?(  <ScrollView
-            refreshControl={
-              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-            }>
-            <View>
-              <FlatList
-                style={styles.flatlist}
-                data={expiryList}
-                // scrollEnabled={true}
-                renderItem={({item}) => <ExpiryListItem item={item} />}
-                
-              />
-            </View>
-          </ScrollView>):(null)}
-         
+          {count > 0 ? (
+            <ScrollView
+              refreshControl={
+                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+              }>
+              <View>
+                <FlatList
+                  style={styles.flatlist}
+                  data={expiryList}
+                  // scrollEnabled={true}
+                  renderItem={({item}) => <ExpiryListItem item={item} />}
+                />
+              </View>
+            </ScrollView>
+          ) : null}
         </Body>
       </Content>
     </Container>
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginLeft: 20,
   },
- 
+
   daysHeader: {
     flex: 0.4,
     fontSize: 16,

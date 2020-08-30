@@ -32,9 +32,9 @@ import Axios from 'axios';
 import EmployeeListItem from '../components/EmployeeListItem';
 import HeaderView from '../components/HeaderView';
 import AsyncStorage from '@react-native-community/async-storage';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 const EmployeeListScreen = ({navigation}) => {
   const [employeeList, setEmployeeList] = useState([]);
@@ -162,7 +162,9 @@ const EmployeeListScreen = ({navigation}) => {
               {/* the add employee button */}
               <TouchableOpacity
                 style={styles.addEmployeeButton}
-                onPress={() => navigation.navigate('AddEmployee', {getUserList})}>
+                onPress={() =>
+                  navigation.navigate('AddEmployee', {getUserList})
+                }>
                 <Icon name="plus" color={appTheme.textPrimary} size={25} />
                 <Text style={styles.addEmployeeButtonText}>Add Employee</Text>
               </TouchableOpacity>

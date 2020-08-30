@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {StyleSheet, Dimensions, processColor} from 'react-native';
 import {LineChart} from 'react-native-charts-wrapper';
 import AsyncStorage from '@react-native-community/async-storage';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 const Functional = () => {
   const [min_Vis, setMin_Vis] = useState(0);

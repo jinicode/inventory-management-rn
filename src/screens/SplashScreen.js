@@ -1,30 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import { Container, Content, Body } from 'native-base';
-import { StackActions } from '@react-navigation/native';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import {Container, Content, Body} from 'native-base';
+import {StackActions} from '@react-navigation/native';
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 export default class SplashScreen extends React.Component {
-
   componentDidMount = async () => {
     try {
-      const auth_key = await AsyncStorage.getItem('auth_key')   // gets auth token from async storage
-      console.log('authkey', auth_key)
-      const data = await fetch('http://chouhanaryan.pythonanywhere.com/auth/users/me/', {
-        method: "GET",
-        headers: {
-          "Authorization": `Token ${auth_key}`,
+      const auth_key = await AsyncStorage.getItem('auth_key'); // gets auth token from async storage
+      console.log('authkey', auth_key);
+      const data = await fetch(
+        'http://chouhanaryan.pythonanywhere.com/auth/users/me/',
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Token ${auth_key}`,
+          },
         },
-      })
-      console.log('okStatus', data.ok)
-      if (data.ok) { // its a valid user
+      );
+      console.log('okStatus', data.ok);
+      if (data.ok) {
+        // its a valid user
         setTimeout(
           () => this.props.navigation.dispatch(StackActions.replace('Drawer')),
           1000,
-        )
+        );
       } else {
         setTimeout(
           () =>

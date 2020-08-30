@@ -1,7 +1,4 @@
-import React, {Component, useState, useEffect, useCallback} from 'react';
-import {useFocusEffect} from '@react-navigation/native';
-
-import axios from 'axios';
+import React, {Component, PureComponent} from 'react';
 import {Body, Container, Content, CardItem} from 'native-base';
 import {
   Alert,
@@ -15,89 +12,105 @@ import {
   RefreshControl,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import HistoryListItem from '../components/HistoryListItem';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import HistoryListItem from './HistoryListItem';
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
-const HistoryScreen = ({navigation}) => {
-  const [transactionlist, setTransactionList] = useState([]);
-  const apiFetch = async () => {
+class History extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      transactionlist: [],
+      refreshing: false,
+    };
+  }
+  async componentDidMount() {
+    // this.willFocusSubscription = this.props.navigation.addListener(
+    //   "focus",
+    //   async () => {
+    //     console.log("focus");
+    this.apiFetch();
+    //   }
+    // );
+  }
+  // componentWillUnmount() {
+  //   this.willFocusSubscription();
+  // }
+  apiFetch = async () => {
     const auth_key = await AsyncStorage.getItem('auth_key');
     var myHeaders = new Headers();
     myHeaders.append('Authorization', 'Token ' + auth_key);
 
-var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
-};
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow',
+    };
 
-fetch("http://chouhanaryan.pythonanywhere.com/api/bill/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+    fetch('http://chouhanaryan.pythonanywhere.com/api/bill/', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        //console.log(result);
+        this.setState({transactionlist: result});
+        //console.log(this.state.transactionlist);
+      })
+      .catch(error => console.log('error', error));
   };
-  useEffect(() => {
-    console.disableYellowBox = true;
-    apiFetch();
-  }, []);
 
-  const [refreshing, setRefreshing] = React.useState(false);
+  onRefresh = async () => {
+    await this.setState({refreshing: !this.state.refreshing});
+    this.apiFetch();
+    await this.setState({refreshing: !this.state.refreshing});
+  };
 
-  const onRefresh = React.useCallback(() => {
-    setRefreshing(true);
-    apiFetch();
-    setRefreshing(false)
-  }, []);
-  return (
-    <Container style={{backgroundColor: appTheme.appgreyBackground}}>
-      <Content>
-        {/* the entire outerpart */}
-        <Body style={styles.listContainer}>
-          {/* the header of table */}
-          <View style={styles.tableHeader}>
-            <CardItem
-              style={{
-                backgroundColor: 'rgba(255,255,255,0)',
-                justifyContent: 'center',
-              }}>
-              {/* <Text style={styles.dateHeader}>Date</Text> */}
-              {/* <Text style={styles.typeHeader}>Type</Text>
-              <Text style={styles.productHeader}>Product</Text>
-              <Text style={styles.noOfItemsHeader}>Items</Text>
-              <Text style={styles.priceHeader}>Price</Text> */}
-              
-              <Text style={styles.typeHeader}>Type</Text>
-              <Text style={styles.productHeader}>Product</Text>
-              <Text style={styles.noOfItemsHeader}>Quanity</Text>
-              <Text style={styles.priceHeader}>Rate</Text>
-            </CardItem>
-          </View>
-
-          {/* the inner list */}
-          <ScrollView
-            refreshControl={
-              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-            }>
-            <View>
-              {/* <FlatList
-              initialNumToRender={10}
-                style={styles.flatlist}
-                data={transactionlist}
-                // scrollEnabled={true}
-                renderItem={({item}) => <HistoryListItem item={item} />}
-                keyExtractor={item => item.id}
-              /> */}
+  render() {
+    return (
+      <Container style={{backgroundColor: appTheme.appgreyBackground}}>
+        <Content>
+          {/* the entire outerpart */}
+          <Body style={styles.listContainer}>
+            {/* the header of table */}
+            <View style={styles.tableHeader}>
+              <CardItem
+                style={{
+                  backgroundColor: 'rgba(255,255,255,0)',
+                  justifyContent: 'center',
+                }}>
+                <Text style={styles.typeHeader}>Type</Text>
+                <Text style={styles.productHeader}>Product</Text>
+                <Text style={styles.noOfItemsHeader}>Quanity</Text>
+                <Text style={styles.priceHeader}>Total</Text>
+              </CardItem>
             </View>
-          </ScrollView>
-        </Body>
-      </Content>
-    </Container>
-  );
-};
 
-export default HistoryScreen;
+            {/* the inner list */}
+            <ScrollView
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={this.onRefresh}
+                />
+              }>
+              <View>
+                <FlatList
+                  style={styles.flatlist}
+                  data={this.state.transactionlist}
+                  // scrollEnabled={true}
+                  renderItem={item => <HistoryListItem item={item} />}
+                  keyExtractor={item => item.id.toString()}
+                />
+              </View>
+            </ScrollView>
+          </Body>
+        </Content>
+      </Container>
+    );
+  }
+}
+
+export default History;
 
 const DEVICE_WIDTH = Dimensions.get('screen').width;
 const DEVICE_HEIGHT = Dimensions.get('screen').height;
@@ -129,23 +142,24 @@ const styles = StyleSheet.create({
     flex: 0.15,
     fontSize: 16,
     fontWeight: 'bold',
-    marginLeft:-20
+    marginLeft: -20,
   },
   productHeader: {
     flex: 0.3,
     fontSize: 16,
     fontWeight: 'bold',
+    marginLeft: 15,
   },
   noOfItemsHeader: {
-    flex: 0.20,
+    flex: 0.2,
     fontSize: 16,
     fontWeight: 'bold',
-    marginLeft:-10
+    marginLeft: -10,
   },
   priceHeader: {
     flex: 0.22,
     fontSize: 16,
     fontWeight: 'bold',
-    marginLeft:10
+    marginLeft: 10,
   },
 });

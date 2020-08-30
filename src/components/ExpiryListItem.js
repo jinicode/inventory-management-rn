@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
 import {CardItem} from 'native-base';
 import {StyleSheet, ScrollView, View, Text} from 'react-native';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 export default class ExpiryListItem extends React.Component {
   componentDidMount() {
     console.disableYellowBox = true;
   }
- constructor(props) {
-     super(props);
- }
- 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -24,19 +24,9 @@ export default class ExpiryListItem extends React.Component {
             alignContent: 'center',
             textAlign: 'center',
           }}>
-        
-          <Text style={styles.productHeader}>
-            {this.props.item.name}
-          </Text>
-          <Text style={styles.itemsHeader}>
-          
-            {this.props.item.quantity}
-          </Text>
-          <Text style={styles.daysHeader}>
-          
-            {this.props.item.daysLeft}
-          </Text>
-        
+          <Text style={styles.productHeader}>{this.props.item.name}</Text>
+          <Text style={styles.itemsHeader}>{this.props.item.quantity}</Text>
+          <Text style={styles.daysHeader}>{this.props.item.daysLeft}</Text>
         </CardItem>
       </View>
     );
@@ -49,26 +39,24 @@ const styles = StyleSheet.create({
     borderColor: appTheme.darkGrey,
     borderWidth: 0.5,
   },
- 
-
 
   itemsHeader: {
     flex: 0.25,
     fontSize: 16,
-   
+
     marginLeft: 40,
   },
   productHeader: {
     flex: 0.35,
     fontSize: 16,
-   
+
     marginLeft: 20,
   },
- 
+
   daysHeader: {
     flex: 0.4,
     fontSize: 16,
-    marginRight:-20,
+    marginRight: -20,
     marginLeft: 30,
   },
 });

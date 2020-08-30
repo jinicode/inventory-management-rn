@@ -22,14 +22,22 @@ import {
 } from 'react-native';
 import Axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 const RegisterScreen = ({navigation}) => {
   return (
     <Container style={{backgroundColor: appTheme.appgreyBackground}}>
-       <Header style={{ backgroundColor: appTheme.appBlue, flexDirection: 'row', alignItems: 'center' }} androidStatusBarColor={appTheme.statusBar}>
-        <Text style={{ color: appTheme.textPrimary, fontSize: 20 }}>Register</Text>
+      <Header
+        style={{
+          backgroundColor: appTheme.appBlue,
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}
+        androidStatusBarColor={appTheme.statusBar}>
+        <Text style={{color: appTheme.textPrimary, fontSize: 20}}>
+          Register
+        </Text>
       </Header>
       <Content>
         <Body>

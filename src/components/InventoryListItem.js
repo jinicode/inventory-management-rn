@@ -27,9 +27,9 @@ import {
   KeyboardAvoidingView,
   Dimensions,
 } from 'react-native';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 export default class InventoryListItem extends React.Component {
   componentDidMount() {
@@ -56,8 +56,6 @@ export default class InventoryListItem extends React.Component {
               {Math.round(this.props.item.avg_cost_price)}
             </Text>
           </View>
-
-         
         </CardItem>
       </View>
     );
@@ -94,5 +92,4 @@ const listItemStyles = StyleSheet.create({
     marginRight: 10,
     // flex: 0.12,
   },
-
 });

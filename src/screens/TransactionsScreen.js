@@ -36,7 +36,7 @@ const TransactionsScreen = ({navigation}) => {
           activeTabStyle={{backgroundColor: appTheme.appBlue}}
           tabStyle={{backgroundColor: appTheme.appBlue}}
           heading="History">
-          <History />
+          <History navigation={navigation} />
         </Tab>
       </Tabs>
     </Container>

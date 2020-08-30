@@ -1,5 +1,14 @@
-import React, { Component, useState, useEffect } from 'react';
-import { Body, Input, Container, Content, Item, Label, Icon, Header } from 'native-base';
+import React, {Component, useState, useEffect} from 'react';
+import {
+  Body,
+  Input,
+  Container,
+  Content,
+  Item,
+  Label,
+  Icon,
+  Header,
+} from 'native-base';
 import {
   StyleSheet,
   ScrollView,
@@ -8,36 +17,34 @@ import {
   KeyboardAvoidingView,
   Image,
   Alert,
-  View
+  View,
 } from 'react-native';
 import Axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 // For Testing enter password : admin   email : admin@admin.com in text inputs
 
-const LoginScreen = ({ navigation }) => {
-
+const LoginScreen = ({navigation}) => {
   const [email, setUserEmail] = useState('');
   const [password, setUserPassword] = useState('');
 
   const login = () => {
-
     // fetching the token by providing email and password
     fetch('http://chouhanaryan.pythonanywhere.com/auth/token/login/', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        'email': email,
-        'password': password
-      })
+        email: email,
+        password: password,
+      }),
     })
-      .then((res) => res.json())
-      .then(async (data) => {
+      .then(res => res.json())
+      .then(async data => {
         const token = data.auth_token;
         if (token) {
           console.log('token is: ' + token);
@@ -55,41 +62,49 @@ const LoginScreen = ({ navigation }) => {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Token ${token}`
-            }
+              Authorization: `Token ${token}`,
+            },
           })
-          .then((res) => res.json())
-          .then(async (data) => {
-
-            // storing is_staff boolean in async storage
-            try {
-              await AsyncStorage.setItem('is_staff', data.is_staff.toString());
-            } catch (error) {
-              console.log('is_staff not saved in async storage properly');
-              console.log(error)
-            }
-            navigation.replace('Drawer');
-          })
-          .catch((err) => {
-            console.log(err)
-          })
+            .then(res => res.json())
+            .then(async data => {
+              // storing is_staff boolean in async storage
+              try {
+                await AsyncStorage.setItem(
+                  'is_staff',
+                  data.is_staff.toString(),
+                );
+              } catch (error) {
+                console.log('is_staff not saved in async storage properly');
+                console.log(error);
+              }
+              navigation.replace('Drawer');
+            })
+            .catch(err => {
+              console.log(err);
+            });
         } else {
-          Alert.alert('Invalid email or password', 'Please enter correct credentials')
+          Alert.alert(
+            'Invalid email or password',
+            'Please enter correct credentials',
+          );
         }
       })
-      .catch((err) => console.log(err))
-  }
-
+      .catch(err => console.log(err));
+  };
 
   return (
-    <Container style={{ backgroundColor: appTheme.appgreyBackground}}>
-      <Header style={{ backgroundColor: appTheme.appBlue, flexDirection: 'row', alignItems: 'center' }} androidStatusBarColor={appTheme.statusBar}>
-        <Text style={{ color: appTheme.textPrimary, fontSize: 24 }}>Login</Text>
-        
+    <Container style={{backgroundColor: appTheme.appgreyBackground}}>
+      <Header
+        style={{
+          backgroundColor: appTheme.appBlue,
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}
+        androidStatusBarColor={appTheme.statusBar}>
+        <Text style={{color: appTheme.textPrimary, fontSize: 24}}>Login</Text>
       </Header>
       <Content>
         <Body>
-
           <Image
             style={{
               width: 274,
@@ -101,7 +116,6 @@ const LoginScreen = ({ navigation }) => {
           />
 
           <Item floatingLabel style={styles.inputBox}>
-
             <Label style={styles.label}>Email ID</Label>
 
             <Input
@@ -110,14 +124,12 @@ const LoginScreen = ({ navigation }) => {
               onChangeText={value => {
                 setUserEmail(value);
               }}
-
               keyboardType="email-address"
               autoCapitalize="none"
             />
           </Item>
 
           <Item floatingLabel style={styles.inputBox}>
-
             <Label style={styles.label}>Password</Label>
             <Input
               style={styles.inputArea}
@@ -144,12 +156,10 @@ const LoginScreen = ({ navigation }) => {
             rounded
             style={styles.loginButton}
             onPress={() => {
-              login()
+              login();
             }}>
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
-
-
 
           {/* <View style={{ flexDirection: 'row' }}>
             <Text style={styles.newUser}>New user? </Text>
@@ -171,7 +181,7 @@ const LoginScreen = ({ navigation }) => {
       </Content>
     </Container>
   );
-}
+};
 
 export default LoginScreen;
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, PureComponent } from 'react';
+import React, {useState, useEffect, PureComponent} from 'react';
 import {
   View,
   Text,
@@ -37,15 +37,13 @@ import SalesPerItem from '../components/SalesPerItem';
 const DEVICE_WIDTH = Dimensions.get('screen').width;
 const DEVICE_HEIGHT = Dimensions.get('screen').height;
 import isAuthenticated from '../utils/isAuthenticated';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 const screenWidth = Dimensions.get('window').width;
 
-
-const Home = ({ navigation }) => {
-
+const Home = ({navigation}) => {
   const [display, setdisplay] = useState(false);
   // const Logout = async () => {
   //   // console.log(await AsyncStorage.getItem('auth_key'));
@@ -54,12 +52,9 @@ const Home = ({ navigation }) => {
   //   navigation.navigate('LoginScreen');
   // };
 
-
-
   return (
-    <ScrollView style={{ flex: 1 }}>
+    <ScrollView style={{flex: 1}}>
       <HeaderView navigation={navigation} title={'Home'} />
-
 
       {/* <TouchableOpacity
         onPress={() => setdisplay(!display)}
@@ -110,7 +105,6 @@ const Home = ({ navigation }) => {
         <SalesPerItem />
       </View>
 
-
       {/* <View style={styles.chartView}>
         <Text style={styles.heading}>Most Sold</Text>
         <MostSoldChart />
@@ -133,7 +127,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginVertical: 20,
     marginHorizontal: 10,
-    marginTop: 30
+    marginTop: 30,
   },
   buttonText: {
     fontSize: 18,
@@ -152,7 +146,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 110,
     marginTop: 10,
     borderRadius: 40,
-  }
+  },
 });
 
 export default Home;
