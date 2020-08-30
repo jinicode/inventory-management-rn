@@ -25,9 +25,9 @@ import {
   Form,
 } from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 //http://chouhanaryan.pythonanywhere.com/api/sell/
 
 const Sell = ({navigation}) => {
@@ -51,7 +51,7 @@ const Sell = ({navigation}) => {
   };
 
   useEffect(() => {
-    setProduct([{name: 'Pick a value', price: '', amount: ''}]);
+    setProduct([{name: 'Pick a value', price: '', quantity: ''}]);
     apiFetch();
   }, []);
 
@@ -73,10 +73,9 @@ const Sell = ({navigation}) => {
   const sellprod = async () => {
     await product.forEach(async product => {
       const formData = new FormData();
-     
 
       formData.append('name', product.name);
-      formData.append('quantity', parseInt(product.amount));
+      formData.append('quantity', parseInt(product.quantity));
       formData.append('price', parseFloat(product.price));
       formdata.append('name', customerName);
       formdata.append('phone', phoneNumber);
@@ -96,9 +95,35 @@ const Sell = ({navigation}) => {
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
-
-    
     });
+  };
+
+  const makeSellBill = async () => {
+    const auth_key = await AsyncStorage.getItem('auth_key');
+    let object = {
+      name: customerName,
+      phone: phoneNumber,
+      address: address,
+      in_or_out: 'Out',
+      order: {...product},
+    };
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', 'Token ' + auth_key);
+    myHeaders.append('Content-Type', 'application/json');
+
+    var raw = JSON.stringify(object);
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+
+    fetch('http://chouhanaryan.pythonanywhere.com/api/order/', requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   };
 
   return (
@@ -106,9 +131,9 @@ const Sell = ({navigation}) => {
       <Content>
         <Body>
           <Text style={styles.heading}>Sell Items</Text>
-          
+
           {/* separator line above name, phone no. and address fields */}
-          <View style={{ flex: 1, flexDirection: 'row', marginBottom: 10 }}>
+          <View style={{flex: 1, flexDirection: 'row', marginBottom: 10}}>
             <View
               style={{
                 borderColor: appTheme.darkGrey,
@@ -137,7 +162,7 @@ const Sell = ({navigation}) => {
             <Label style={styles.label}>Phone number</Label>
             <Input
               style={styles.inputArea}
-              keyboardType='number-pad'
+              keyboardType="number-pad"
               value={phoneNumber}
               onChangeText={value => setPhoneNumber(value)}
             />
@@ -231,7 +256,7 @@ const Sell = ({navigation}) => {
                     style={styles.inputArea}
                     keyboardType="numeric"
                     onChangeText={value =>
-                      (product[product_index].amount = parseInt(value.trim()))
+                      (product[product_index].quantity = parseInt(value.trim()))
                     }
                   />
                 </Item>
@@ -245,10 +270,10 @@ const Sell = ({navigation}) => {
               if (
                 product[product.length - 1].name &&
                 product[product.length - 1].price &&
-                product[product.length - 1].amount
+                product[product.length - 1].quantity
               ) {
                 let copy = [...product];
-                copy.push({name: '', price: '', amount: ''});
+                copy.push({name: '', price: '', quantity: ''});
                 setProduct(copy);
               } else {
                 Alert.alert(
@@ -257,7 +282,12 @@ const Sell = ({navigation}) => {
               }
             }}
             style={styles.addButton}>
-            <Icon name="plus" color={appTheme.appBlue} size={25} style={styles.icon} />
+            <Icon
+              name="plus"
+              color={appTheme.appBlue}
+              size={25}
+              style={styles.icon}
+            />
             <Text style={styles.addButtonText}>Add Product</Text>
           </TouchableOpacity>
 
@@ -282,7 +312,7 @@ const Sell = ({navigation}) => {
               } else if (
                 product[product.length - 1].name == '' ||
                 product[product.length - 1].price == '' ||
-                product[product.length - 1].amount == ''
+                product[product.length - 1].quantity == ''
               ) {
                 Alert.alert(
                   `Please fill valid details for product ${product.length}`,
@@ -297,7 +327,7 @@ const Sell = ({navigation}) => {
                     const list_item_object = list[j];
                     if (
                       product_object.name == list_item_object.name &&
-                      product_object.amount > list_item_object.quantity
+                      product_object.quantity > list_item_object.quantity
                     ) {
                       shortage_products.push(product_object.name);
                       enough_stock = false;
@@ -312,14 +342,15 @@ const Sell = ({navigation}) => {
                 } else {
                   console.log('finally sold!!');
                   await sellprod();
+                  await makeSellBill();
                   await setProduct([]);
-                  await setProduct([{name: '', price: '', amount: ''}]);
+                  await setProduct([{name: '', price: '', quantity: ''}]);
                   await setAddress();
-                await setAddress('');
-                await  setCustomerName();
-                await setCustomerName('');
-                await setPhoneNumber();
-                await setPhoneNumber('')
+                  await setAddress('');
+                  await setCustomerName();
+                  await setCustomerName('');
+                  await setPhoneNumber();
+                  await setPhoneNumber('');
                 }
               }
             }}

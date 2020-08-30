@@ -151,7 +151,7 @@ const LoginScreen = ({ navigation }) => {
 
 
 
-          <View style={{ flexDirection: 'row' }}>
+          {/* <View style={{ flexDirection: 'row' }}>
             <Text style={styles.newUser}>New user? </Text>
             <TouchableOpacity onPress={() => {
               navigation.navigate('RegisterScreen');
@@ -166,7 +166,7 @@ const LoginScreen = ({ navigation }) => {
               marginBottom: 10,
               marginBottom: 10,
             }}>Register</Text></TouchableOpacity>
-          </View>
+          </View> */}
         </Body>
       </Content>
     </Container>

@@ -27,10 +27,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {ScrollView} from 'react-native-gesture-handler';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import axios from 'axios';
-import colors, {appTheme} from "../constants/colors";
-import {spacing} from "../constants/dimension";
-import fontSizes from "../constants/fontSizes";
-
+import colors, {appTheme} from '../constants/colors';
+import {spacing} from '../constants/dimension';
+import fontSizes from '../constants/fontSizes';
 
 const Buy = ({navigation}) => {
   const [product, setProduct] = useState([]);
@@ -44,90 +43,50 @@ const Buy = ({navigation}) => {
   const [address, setAddress] = useState('');
 
   useEffect(() => {
-    setProduct([{name: '', price: 0, amount: 0, expiry: ''}]);
+    setProduct([{name: '', price: 0, quantity: 0, expiry: ''}]);
     setDate_array([new Date()]);
   }, []);
 
-
-  const finalPost = async () => {
-
-    console.log('PRODUCT IN FINALPOST')
-    console.log(product);
-    console.log('PRODUCT IN FINALPOST')
-    
-    // let myHeaders = new Headers();
-    // myHeaders.append('Authorization', `Token ${auth_key}`);
-    // myHeaders.append('Content-Type', 'application/json');
-
-    
-    // const form = new FormData();
-    // formdata.append('name', product.name);
-    // formdata.append('quantity', product.amount);
-    // formdata.append('avg_cost_price', product.price);
-    // formdata.append('expiry', product.expiry);
-    
-    // console.log(object);
-    
+  const makeBuyBill = async () => {
     const auth_key = await AsyncStorage.getItem('auth_key');
-    console.log('--------------------------')
-    console.log(auth_key);
-    console.log('--------------------------')
-    console.log(product);
     let object = {
       name: customerName,
       phone: phoneNumber,
       address: address,
       in_or_out: 'In',
-      order: {...product}
-    }
-    console.log('--------------------------')
-    console.log(object);
-    console.log('--------------------------')
-    fetch('http://chouhanaryan.pythonanywhere.com/api/order/', {
+      order: {...product},
+    };
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', 'Token ' + auth_key);
+    myHeaders.append('Content-Type', 'application/json');
+
+    var raw = JSON.stringify(object);
+
+    var requestOptions = {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': "Token " + auth_key,
-      },
-      body: object
-    })
-    .then((res) => {
-      console.log(res);
-      return res.json()
-    })
-    .then((data) => {
-      console.log(data)
-    })
-    .catch((err) => console.log(err))
-  }
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+
+    fetch('http://chouhanaryan.pythonanywhere.com/api/order/', requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  };
 
   const buyprod = async () => {
-
-    console.log('PRODUCT IN BUYPROD')
-    console.log(product);
-    console.log('PRODUCT IN BUYPROD')
-
     product.forEach(async product => {
       const formdata = new FormData();
 
-    
-
       formdata.append('name', product.name);
-      formdata.append('quantity', product.amount);
+      formdata.append('quantity', product.quantity);
       formdata.append('avg_cost_price', product.price);
       formdata.append('expiry', product.expiry);
-      
-      // formdata.append('price', product.price);
-      // formdata.append('name', customerName);
-      // formdata.append('phone', phoneNumber);
-      // formdata.append('address', address);
-      // formdata.append('in_or_out', 'In');
-      // formdata.append('expiryDate', product.expiry);
 
       let myHeaders = new Headers();
       const auth_key = await AsyncStorage.getItem('auth_key');
       myHeaders.append('Authorization', `Token ${auth_key}`);
-      // myHeaders.append('Content-Type', 'application/json');
 
       fetch('http://chouhanaryan.pythonanywhere.com/api/buy/', {
         method: 'POST',
@@ -135,15 +94,10 @@ const Buy = ({navigation}) => {
         body: formdata,
         redirect: 'follow',
       })
-      .then((res) => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.log(err));
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
     });
-
-
-
-
-
   };
 
   const set_date = e => {
@@ -179,9 +133,7 @@ const Buy = ({navigation}) => {
 
           {/* separator line above name, phone no. and address fields */}
           <View style={{flex: 1, flexDirection: 'row', marginBottom: 10}}>
-            <View
-              style={styles.mainView}
-            />
+            <View style={styles.mainView} />
           </View>
 
           {/* customer name */}
@@ -219,9 +171,7 @@ const Buy = ({navigation}) => {
             return (
               <View key={index} style={{width: Dimensions.get('window').width}}>
                 {/* for the separating line */}
-                <View
-                  style={styles.mainBorder}
-                />
+                <View style={styles.mainBorder} />
 
                 {/* Product title */}
                 <Text style={styles.product_titles}>
@@ -257,7 +207,7 @@ const Buy = ({navigation}) => {
                     style={styles.inputArea}
                     keyboardType="numeric"
                     onChangeText={value =>
-                      (product[index].amount = parseInt(value.trim()))
+                      (product[index].quantity = parseInt(value.trim()))
                     }
                   />
                 </Item>
@@ -265,8 +215,7 @@ const Buy = ({navigation}) => {
                 {/* Expiry date text */}
                 <View style={{flexDirection: 'row', flex: 1}}>
                   <View style={styles.dateMainView}>
-                    <Text
-                      style={styles.expiryText}>
+                    <Text style={styles.expiryText}>
                       Expiry: {product[index].expiry}
                     </Text>
                   </View>
@@ -309,11 +258,11 @@ const Buy = ({navigation}) => {
               if (
                 product[product.length - 1].name &&
                 product[product.length - 1].price &&
-                product[product.length - 1].amount &&
+                product[product.length - 1].quantity &&
                 product[product.length - 1].expiry.length === 10 // length should be 10 because for date, we have format YYYY-MM-DD, and the length of the string is thus 10
               ) {
                 let copy = [...product];
-                copy.push({name: '', price: 0, amount: 0, expiry: ''});
+                copy.push({name: '', price: 0, quantity: 0, expiry: ''});
                 setProduct(copy);
                 let dates_copy = [...date_array];
                 dates_copy.push(new Date());
@@ -325,7 +274,12 @@ const Buy = ({navigation}) => {
               }
             }}
             style={styles.addButton}>
-            <Icon name="plus" color={appTheme.appBlue} size={25} style={styles.icon} />
+            <Icon
+              name="plus"
+              color={appTheme.appBlue}
+              size={25}
+              style={styles.icon}
+            />
             <Text style={styles.addButtonText}>Add Product</Text>
           </TouchableOpacity>
 
@@ -337,7 +291,7 @@ const Buy = ({navigation}) => {
                 if (
                   product[i].name == '' ||
                   product[i].price == 0 ||
-                  product[i].amount == 0 ||
+                  product[i].quantity == 0 ||
                   product[i].expiry.length !== 10
                 ) {
                   can_buy = false;
@@ -351,9 +305,11 @@ const Buy = ({navigation}) => {
                 );
               } else {
                 await buyprod();
-                await finalPost();
+                await makeBuyBill();
                 await setProduct([]);
-                await setProduct([{name: '', price: 0, amount: 0, expiry: ''}]);
+                await setProduct([
+                  {name: '', price: 0, quantity: 0, expiry: ''},
+                ]);
                 await setDate_array([new Date()]);
                 await setAddress();
                 await setAddress('');
@@ -408,15 +364,15 @@ const styles = StyleSheet.create({
 
     marginLeft: '10%',
   },
-mainBorder: {
-  borderColor: appTheme.darkGrey,
-  borderWidth: 1,
-  width: '90%',
-  alignSelf: 'center',
-  borderRadius: 2,
-  marginBottom: -10,
-  marginTop: 5,
-},
+  mainBorder: {
+    borderColor: appTheme.darkGrey,
+    borderWidth: 1,
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 2,
+    marginBottom: -10,
+    marginTop: 5,
+  },
   inputBox: {
     backgroundColor: appTheme.darkGrey,
     borderRadius: 10,
@@ -469,7 +425,7 @@ mainBorder: {
     marginLeft: 4,
     marginRight: 10,
   },
-  mainView:{
+  mainView: {
     borderColor: appTheme.darkGrey,
     borderWidth: 1,
     width: '90%',
@@ -478,7 +434,7 @@ mainBorder: {
     marginBottom: -10,
     marginTop: 5,
   },
-  expiryText:{
+  expiryText: {
     marginLeft: 4,
     fontSize: 16,
     marginTop: 17,
