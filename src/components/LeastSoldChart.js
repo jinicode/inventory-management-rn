@@ -171,11 +171,11 @@ export default class LeastSoldChart extends Component {
                     Product :  {this.state.selected_product}{'\n'}
                     Items Sold :  {this.state.selected_noOfItems}{'\n'}
           </Text>
-          <SCLAlertButton theme="danger" onPress={this.handleClose} containerStyle={{ backgroundColor: '#4796BD' }}>OK</SCLAlertButton>
+          <SCLAlertButton theme="danger" onPress={this.handleClose} containerStyle={{ backgroundColor: appTheme.appBlue }}>OK</SCLAlertButton>
         </SCLAlert>
       </View>
 
-      // #4796BD blue
+
     )
   }
 }

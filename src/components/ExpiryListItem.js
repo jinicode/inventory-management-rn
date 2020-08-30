@@ -46,7 +46,7 @@ export default class ExpiryListItem extends React.Component {
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 5,
-    borderColor: '#E0E0E0',
+    borderColor: appTheme.darkGrey,
     borderWidth: 0.5,
   },
  

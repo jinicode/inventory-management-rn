@@ -69,27 +69,26 @@ const shinyBlue = {
   dark: '#543864',
   primary: '#ff6363',
   secondary: '#ffbd69'
+};
+
+
+const appMainColors={
+  blue:"#4796BD",
+  statusBar:"#247096",
+  greyBackground:'#f3f9fb',
+  paleBlue:'#122E40',
+  darkGrey:'#E0E0E0',
+  borderGray:'#858585'
 }
 
 export const appTheme = {
-  darkBackground: darkPallet.extraDarkBlue,
-  background: darkPallet.darkBlue,
-  brightContent: darkPallet.hotOrange,
-  brightContentFaded: darkPallet.hotOrangeFaded,
-  altBrightContent:darkPallet.brightGreen,
-  lightBackground: darkPallet.lightBlue,
-  content: darkPallet.extraLightBlue,
-  lightContent: darkPallet.skyBlue,
-  grey: darkPallet.greyBlue,
-  greyC:'#ccc',
-  darkGrey: darkPallet.darkGrey,
-  gradient: darkPallet.orangeGradient,
-  secondaryGradient: darkPallet.gradients.pink,
-  tertiaryGradient: darkPallet.gradients.blue,
-  quaternaryGradient: darkPallet.gradients.purple,
-  disabledGradient: darkPallet.gradients.grey,
-  live:'#E51D23',
+  borderGrey:appMainColors.borderGray,
+  darkGrey:appMainColors.darkGrey,
+  paleBlue:appMainColors.paleBlue,
+  appgreyBackground:appMainColors.greyBackground,
+  appBlue:appMainColors.blue,
   textPrimary:'white',
+  statusBar:appMainColors.statusBar,
 }
 
 export const bmiColors = {

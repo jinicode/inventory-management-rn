@@ -66,7 +66,7 @@ export default class EmployeeListItem extends React.Component {
 const listItemStyles = StyleSheet.create({
   container: {
     paddingVertical: 5,
-    borderColor: '#E0E0E0',
+    borderColor: appTheme.darkGrey,
     borderWidth: 0.5,
     justifyContent: 'center',
     // backgroundColor:'red',
@@ -92,15 +92,13 @@ const listItemStyles = StyleSheet.create({
     fontSize: 13,
     paddingHorizontal: 4,
     flexWrap: 'wrap',
-    // backgroundColor:'green',
+
   },
   age: {
     flex: 0.1,
     fontSize: 15,
     paddingLeft: 10,
-    // backgroundColor:'yellow',
+
   },
 
-  // backgroundColor: '#4796BD', blue
-  // backgroundColor: '#E0E0E0', grey
 });

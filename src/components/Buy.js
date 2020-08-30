@@ -172,7 +172,7 @@ const Buy = ({navigation}) => {
   };
 
   return (
-    <Container style={{backgroundColor: '#F3F9FB'}}>
+    <Container style={{backgroundColor: appTheme.appgreyBackground}}>
       <ScrollView>
         <Body>
           <Text style={styles.heading}>Buy Items</Text>
@@ -278,7 +278,7 @@ const Buy = ({navigation}) => {
                     }}>
                     <Icon
                       name="calendar"
-                      color="#4796BD"
+                      color={appTheme.appBlue}
                       size={30}
                       style={styles.datePickerIcon}
                     />
@@ -325,7 +325,7 @@ const Buy = ({navigation}) => {
               }
             }}
             style={styles.addButton}>
-            <Icon name="plus" color="#4796BD" size={25} style={styles.icon} />
+            <Icon name="plus" color={appTheme.appBlue} size={25} style={styles.icon} />
             <Text style={styles.addButtonText}>Add Product</Text>
           </TouchableOpacity>
 
@@ -382,7 +382,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   dateMainView: {
-    backgroundColor: '#E0E0E0',
+    backgroundColor: appTheme.darkGrey,
     borderRadius: 10,
     marginRight: 20,
     marginLeft: 28,
@@ -393,7 +393,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 26,
-    color: '#122E40',
+    color: appTheme.paleBlue,
     fontWeight: 'bold',
     marginTop: 25,
     marginBottom: 10,
@@ -402,7 +402,7 @@ const styles = StyleSheet.create({
   },
   product_titles: {
     fontSize: 24,
-    color: '#122E40',
+    color: appTheme.paleBlue,
     marginTop: 25,
     marginBottom: 10,
 
@@ -418,7 +418,7 @@ mainBorder: {
   marginTop: 5,
 },
   inputBox: {
-    backgroundColor: '#E0E0E0',
+    backgroundColor: appTheme.darkGrey,
     borderRadius: 10,
     marginRight: 28,
     marginLeft: 28,
@@ -438,7 +438,7 @@ mainBorder: {
     paddingLeft: 20,
   },
   buyButton: {
-    backgroundColor: '#4796BD',
+    backgroundColor: appTheme.appBlue,
     margin: 15,
     padding: 10,
     paddingHorizontal: 40,
@@ -446,12 +446,12 @@ mainBorder: {
     flexDirection: 'row',
   },
   buyButtonText: {
-    color: '#fff',
+    color: appTheme.textPrimary,
     fontWeight: 'bold',
     textAlignVertical: 'center',
   },
   addButton: {
-    borderColor: '#4796BD',
+    borderColor: appTheme.appBlue,
     borderWidth: 2,
     margin: 20,
     padding: 10,
@@ -461,7 +461,7 @@ mainBorder: {
     justifyContent: 'space-between',
   },
   addButtonText: {
-    color: '#4796BD',
+    color: appTheme.appBlue,
     fontWeight: 'bold',
     textAlignVertical: 'center',
   },

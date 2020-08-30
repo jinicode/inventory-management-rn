@@ -82,9 +82,9 @@ const LoginScreen = ({ navigation }) => {
 
 
   return (
-    <Container style={{ backgroundColor: '#F3F9FB' }}>
-      <Header style={{ backgroundColor: '#4796BD', flexDirection: 'row', alignItems: 'center' }} androidStatusBarColor="#247095">
-        <Text style={{ color: '#fff', fontSize: 24 }}>Login</Text>
+    <Container style={{ backgroundColor: appTheme.appgreyBackground}}>
+      <Header style={{ backgroundColor: appTheme.appBlue, flexDirection: 'row', alignItems: 'center' }} androidStatusBarColor={appTheme.statusBar}>
+        <Text style={{ color: appTheme.textPrimary, fontSize: 24 }}>Login</Text>
         
       </Header>
       <Content>
@@ -187,13 +187,13 @@ const styles = StyleSheet.create({
   loginButton: {
     width: 280,
     height: 50,
-    backgroundColor: '#4796BD',
+    backgroundColor: appTheme.appBlue,
     borderRadius: 10,
     justifyContent: 'center',
     marginTop: 25,
   },
   buttonText: {
-    color: '#fff',
+    color: appTheme.textPrimary,
     fontSize: 20,
     alignSelf: 'center',
     alignContent: 'flex-start',
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 30,
-    color: '#122E40',
+    color: appTheme.paleBlue,
     fontWeight: 'bold',
     marginTop: 25,
     marginBottom: 10,
@@ -209,13 +209,13 @@ const styles = StyleSheet.create({
   },
   subHeading: {
     fontSize: 22,
-    color: '#122E40',
+    color: appTheme.paleBlue,
     alignSelf: 'flex-start',
     marginTop: 10,
     marginLeft: 20,
   },
   inputBox: {
-    backgroundColor: '#E0E0E0',
+    backgroundColor: appTheme.darkGrey,
     borderRadius: 10,
     marginRight: 28,
     marginLeft: 28,

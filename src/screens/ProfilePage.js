@@ -1,11 +1,12 @@
 import React, { useState, useEffect, PureComponent } from 'react';
-import { View, Text, Dimensions, ScrollView, StyleSheet, TouchableOpacity, AsyncStorage, Alert, ActivityIndicator, CheckBox } from 'react-native';
+import { View, Text, Dimensions, ScrollView, StyleSheet, TouchableOpacity, Alert, ActivityIndicator, CheckBox } from 'react-native';
 import {
     Button,
     Body,
     Input, Container, Radio, Label,
     Header, Left, Right,
 } from 'native-base';
+import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/Feather';
 import colors, {appTheme} from "../constants/colors";
 import {spacing} from "../constants/dimension";
@@ -123,14 +124,14 @@ const ProfilePage = ({ navigation }) => {
 
     return (
         <ScrollView style={{ flex: 1 }}>
-            <Header style={{ backgroundColor: '#4796BD', flexDirection: 'row' }} androidStatusBarColor="#247096">
+            <Header style={{ backgroundColor: appTheme.appBlue, flexDirection: 'row' }} androidStatusBarColor={appTheme.statusBar}>
                 <Left>
                     <TouchableOpacity onPress={() => { navigation.navigate('Drawer') }}>
-                        <Icon name="home" color="white" size={35} />
+                        <Icon name="home" color={appTheme.textPrimary} size={35} />
                     </TouchableOpacity>
                 </Left>
                 <Body>
-                    <Text style={{ fontSize: 21, color: '#fff' }}>Profile</Text>
+                    <Text style={{ fontSize: 21, color: appTheme.textPrimary }}>Profile</Text>
                 </Body>
 
             </Header>
@@ -150,7 +151,7 @@ const ProfilePage = ({ navigation }) => {
                         {/* <Text style={styles.profileTitle}>  </Text> */}
 
                         {!editMode && <TouchableOpacity style={styles.editButton} onPress={() => toggleEditMode(!editMode)}>
-                            <Icon name="edit" color="#4796BD" size={25} />
+                            <Icon name="edit" color={appTheme.appBlue} size={25} />
                             <Text style={styles.editText}> Edit </Text>
                         </TouchableOpacity>}
 
@@ -245,7 +246,7 @@ const ProfilePage = ({ navigation }) => {
                     {
                         editMode &&
                         <TouchableOpacity style={styles.saveButton} onPress={() => onSavePressed()}>
-                            {/* <Icon name="edit" color="#4796BD" size={25} /> */}
+                            {/* <Icon name="edit" color={appTheme.appBlue} size={25} /> */}
                             <Text style={styles.editText}> Save </Text>
                         </TouchableOpacity>
                     }
@@ -271,11 +272,11 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     editText: {
-        color: '#4796BD',
+        color: appTheme.appBlue,
     },
     editButton: {
         // flex: 0.6,
-        borderColor: '#4796BD',
+        borderColor: appTheme.appBlue,
         borderWidth: 2,
         width: 200,
         height: 50,
@@ -295,7 +296,7 @@ const styles = StyleSheet.create({
     },
     saveButton: {
         // flex: 0.4,
-        borderColor: '#4796BD',
+        borderColor: appTheme.appBlue,
         borderWidth: 2,
         borderRadius: 10,
         paddingHorizontal: 20,
@@ -308,7 +309,7 @@ const styles = StyleSheet.create({
         // justifyContent: 'center',
     },
     inputAreaEditMode: {
-        backgroundColor: '#E0E0E0',
+        backgroundColor: appTheme.darkGrey,
         borderRadius: 10,
         marginRight: 28,
         marginLeft: 28,
@@ -352,7 +353,7 @@ const styles = StyleSheet.create({
     },
 
     logoutButton: {
-        backgroundColor: '#4796BD',
+        backgroundColor: appTheme.appBlue,
         marginHorizontal: 100,
         paddingVertical: 10,
         // paddingHorizontal: ,
@@ -361,7 +362,7 @@ const styles = StyleSheet.create({
         // position:'fixed',
       },
       logoutText: {
-        color: '#fff',
+        color: appTheme.textPrimary,
         fontWeight: 'bold',
         fontSize: 18,
         textAlignVertical: 'center',

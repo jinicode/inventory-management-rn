@@ -106,7 +106,7 @@ export default class AddEmployee extends Component {
 
   render() {
     return (
-      <Container style={{backgroundColor: '#F3F9FB'}}>
+      <Container style={{backgroundColor: appTheme.appgreyBackground}}>
         <HeaderView navigation={this.props.navigation} title={'Add Employee'} />
         <Content>
           <ScrollView>
@@ -293,13 +293,13 @@ const styles = StyleSheet.create({
   regButton: {
     width: 280,
     height: 40,
-    backgroundColor: '#4796BD',
+    backgroundColor: appTheme.appBlue,
     borderRadius: 20,
     justifyContent: 'center',
     marginTop: 25,
   },
   buttonText: {
-    color: '#fff',
+    color: appTheme.textPrimary,
     fontSize: 20,
     alignSelf: 'center',
     alignContent: 'flex-start',
@@ -307,7 +307,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 30,
-    color: '#122E40',
+    color: appTheme.paleBlue,
     fontWeight: 'bold',
     marginTop: 25,
     marginBottom: 10,
@@ -316,13 +316,13 @@ const styles = StyleSheet.create({
   },
   subHeading: {
     fontSize: 22,
-    color: '#122E40',
+    color: appTheme.paleBlue,
     alignSelf: 'flex-start',
     marginTop: 10,
     marginLeft: 20,
   },
   inputBox: {
-    backgroundColor: '#E0E0E0',
+    backgroundColor: appTheme.darkGrey,
     borderRadius: 10,
     marginRight: 28,
     marginLeft: 28,

@@ -19,18 +19,18 @@ const TransactionsScreen = ({navigation}) => {
       <Tabs>
         <Tab
           
-          activeTabStyle={{backgroundColor: '#4796BD'}}
-          tabStyle={{backgroundColor: '#4796BD'}}
-          textStyle={{color: '#fff'}}
-          activeTextStyle={{color: '#fff', fontWeight: 'bold'}}
+          activeTabStyle={{backgroundColor: appTheme.appBlue}}
+          tabStyle={{backgroundColor: appTheme.appBlue}}
+          textStyle={{color: appTheme.textPrimary}}
+          activeTextStyle={{color: appTheme.textPrimary, fontWeight: 'bold'}}
           heading="Inventory">
           <InventoryListScreen />
         </Tab>
         <Tab
-          activeTabStyle={{backgroundColor: '#4796BD'}}
-          tabStyle={{backgroundColor: '#4796BD'}}
-          textStyle={{color: '#fff'}}
-          activeTextStyle={{color: '#fff', fontWeight: 'bold'}}
+          activeTabStyle={{backgroundColor: appTheme.appBlue}}
+          tabStyle={{backgroundColor: appTheme.appBlue}}
+          textStyle={{color: appTheme.textPrimary}}
+          activeTextStyle={{color: appTheme.textPrimary, fontWeight: 'bold'}}
           heading="Near expiry">
           <ExpiryScreen />
         </Tab>

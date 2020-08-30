@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
-    color: 'white',
+    color: appTheme.textPrimary,
     // marginHorizontal: 10,
     paddingHorizontal: 10,
     paddingVertical: 6,
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#4796BD',
+    backgroundColor: appTheme.appBlue,
     marginHorizontal: 110,
     marginTop: 10,
     borderRadius: 40,

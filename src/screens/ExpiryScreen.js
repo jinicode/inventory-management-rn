@@ -65,7 +65,7 @@ const ExpiryScreen = ({navigation}) => {
      setRefreshing(false)
   }, []);
   return (
-    <Container style={{backgroundColor: '#F3F9FB'}}>
+    <Container style={{backgroundColor: appTheme.appgreyBackground}}>
       <Text style={{fontWeight: 'bold', fontSize: 20, alignSelf: 'center'}}>
         Items expiring in next 3 days.
       </Text>
@@ -115,8 +115,8 @@ const DEVICE_HEIGHT = Dimensions.get('screen').height;
 
 const styles = StyleSheet.create({
   listContainer: {
-    backgroundColor: '#fff',
-    borderColor: '#858585',
+    backgroundColor: appTheme.textPrimary,
+    borderColor: appTheme.borderGrey,
     borderWidth: 0.5,
     alignItems: 'center',
     marginHorizontal: 10,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   },
   flatlist: {
     width: DEVICE_WIDTH - 32,
-    backgroundColor: '#fff',
+    backgroundColor: appTheme.textPrimary,
     height: 600,
     borderRadius: 10,
   },

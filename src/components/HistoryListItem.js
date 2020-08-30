@@ -114,7 +114,7 @@ export default class HistoryListItem extends React.Component {
 const listItemStyles = StyleSheet.create({
   container: {
     paddingVertical: 5,
-    borderColor: '#E0E0E0',
+    borderColor: appTheme.darkGrey,
     borderWidth: 0.5,
   },
 

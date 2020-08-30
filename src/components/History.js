@@ -56,7 +56,7 @@ const HistoryScreen = ({navigation}) => {
     setRefreshing(false)
   }, []);
   return (
-    <Container style={{backgroundColor: '#F3F9FB'}}>
+    <Container style={{backgroundColor: appTheme.appgreyBackground}}>
       <Content>
         {/* the entire outerpart */}
         <Body style={styles.listContainer}>
@@ -109,8 +109,8 @@ const DEVICE_HEIGHT = Dimensions.get('screen').height;
 
 const styles = StyleSheet.create({
   listContainer: {
-    backgroundColor: '#fff',
-    borderColor: '#858585',
+    backgroundColor: appTheme.textPrimary,
+    borderColor: appTheme.borderGrey,
     borderWidth: 0.5,
     alignItems: 'center',
     marginHorizontal: 16,
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   flatlist: {
     width: DEVICE_WIDTH - 32,
-    backgroundColor: '#fff',
+    backgroundColor: appTheme.textPrimary,
     height: 600,
     borderRadius: 10,
   },

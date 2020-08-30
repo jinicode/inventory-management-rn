@@ -226,7 +226,7 @@ const InventoryListScreen = ({navigation}) => {
   ];
 
   return (
-    <Container style={{backgroundColor: '#F3F9FB'}}>
+    <Container style={{backgroundColor: appTheme.appgreyBackground}}>
       <Modal
         animationType="slide"
         transparent={true}
@@ -437,27 +437,25 @@ const DEVICE_HEIGHT = Dimensions.get('screen').height;
 
 const styles = StyleSheet.create({
   listContainer: {
-    backgroundColor: '#fff',
-    borderColor: '#858585',
+    backgroundColor: appTheme.textPrimary,
+    borderColor: appTheme.borderGrey,
     borderWidth: 0.5,
     alignItems: 'center',
     marginHorizontal: 16,
     marginVertical: 16,
     borderRadius: 20,
     width: DEVICE_WIDTH - 32,
-    // flexDirection: 'column',
-    // backgroundColor: 'blue',
+   
   },
   flatlist: {
     width: DEVICE_WIDTH - 32,
-    backgroundColor: '#fff',
+    backgroundColor: appTheme.textPrimary,
     height: 488,
     alignSelf: 'center',
   },
   tableHeader: {
     backgroundColor: '#e7eff2',
-    // backgroundColor: 'red',
-    // alignSelf: 'stretch',
+    
     width: DEVICE_WIDTH - 32,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
@@ -471,7 +469,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     borderWidth: 2,
     fontSize: 23,
-    borderColor: '#4796BD',
+    borderColor: appTheme.appBlue,
     borderRadius: 28,
     color: 'black',
   },
@@ -493,7 +491,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   addEmployeeButton: {
-    backgroundColor: '#4796BD',
+    backgroundColor: appTheme.appBlue,
     margin: 40,
     padding: 10,
     paddingHorizontal: 20,
@@ -503,7 +501,7 @@ const styles = StyleSheet.create({
     // position:'fixed',
   },
   addEmployeeButtonText: {
-    color: '#fff',
+    color: appTheme.textPrimary,
     fontWeight: 'bold',
     textAlignVertical: 'center',
     // padding:6,
@@ -516,7 +514,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: 'white',
+    backgroundColor: appTheme.textPrimary,
     borderRadius: 20,
     padding: 35,
     alignItems: 'flex-start',
@@ -536,7 +534,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   textStyle: {
-    color: 'white',
+    color: appTheme.textPrimary,
     fontWeight: 'bold',
     textAlign: 'center',
   },
@@ -553,7 +551,7 @@ const styles = StyleSheet.create({
   },
   product_titles: {
     fontSize: 24,
-    color: '#122E40',
+    color: appTheme.paleBlue,
     marginTop: 25,
     marginBottom: 20,
     alignSelf: 'center',

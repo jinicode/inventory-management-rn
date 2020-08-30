@@ -8,18 +8,18 @@ import fontSizes from "../constants/fontSizes";
 
 const HeaderView = ({ navigation,title }) => {
   return (
-    <Header style={{ backgroundColor: '#4796BD', flexDirection: 'row' }} androidStatusBarColor="#247095" >
+    <Header style={{ backgroundColor: appTheme.appBlue, flexDirection: 'row' }} androidStatusBarColor={appTheme.statusBar} >
       <Left>
         <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-          <Icon name="menu" color="white" size={35} />
+          <Icon name="menu" color={appTheme.textPrimary} size={35} />
         </TouchableOpacity>
       </Left>
       <Body>
-        <Text style={{fontSize: 21, color: '#fff'}}>{title}</Text>
+        <Text style={{fontSize: 21, color: appTheme.textPrimary}}>{title}</Text>
       </Body>
       <Right>
         <TouchableOpacity onPress={() => navigation.replace('ProfilePage')}>
-          <Icon name="user" color="white" size={35} />
+          <Icon name="user" color={appTheme.textPrimary} size={35} />
         </TouchableOpacity>
       </Right>
     </Header>

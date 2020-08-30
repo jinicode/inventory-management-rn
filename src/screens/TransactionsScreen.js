@@ -21,20 +21,20 @@ const TransactionsScreen = ({navigation}) => {
 
       <Tabs>
         <Tab
-          activeTabStyle={{backgroundColor: '#4796BD'}}
-          tabStyle={{backgroundColor: '#4796BD'}}
+          activeTabStyle={{backgroundColor: appTheme.appBlue}}
+          tabStyle={{backgroundColor: appTheme.appBlue}}
           heading="Buy">
           <Buy  />
         </Tab>
         <Tab
-          activeTabStyle={{backgroundColor: '#4796BD'}}
-          tabStyle={{backgroundColor: '#4796BD'}}
+          activeTabStyle={{backgroundColor: appTheme.appBlue}}
+          tabStyle={{backgroundColor: appTheme.appBlue}}
           heading="Sell">
           <Sell  />
         </Tab>
         <Tab
-          activeTabStyle={{backgroundColor: '#4796BD'}}
-          tabStyle={{backgroundColor: '#4796BD'}}
+          activeTabStyle={{backgroundColor: appTheme.appBlue}}
+          tabStyle={{backgroundColor: appTheme.appBlue}}
           heading="History">
           <History />
         </Tab>

@@ -127,7 +127,7 @@ const EmployeeListScreen = ({navigation}) => {
   if (isReady) {
     if (currentUserDetails.is_staff) {
       return (
-        <Container style={{backgroundColor: '#F3F9FB'}}>
+        <Container style={{backgroundColor: appTheme.appgreyBackground}}>
           <HeaderView navigation={navigation} title={'Employee Details'} />
           <Content>
             {/* the entire outerpart */}
@@ -163,7 +163,7 @@ const EmployeeListScreen = ({navigation}) => {
               <TouchableOpacity
                 style={styles.addEmployeeButton}
                 onPress={() => navigation.navigate('AddEmployee', {getUserList})}>
-                <Icon name="plus" color="white" size={25} />
+                <Icon name="plus" color={appTheme.textPrimary} size={25} />
                 <Text style={styles.addEmployeeButtonText}>Add Employee</Text>
               </TouchableOpacity>
             </Body>
@@ -172,7 +172,7 @@ const EmployeeListScreen = ({navigation}) => {
       );
     } else if (!currentUserDetails.is_staff) {
       return (
-        <Container style={{backgroundColor: '#F3F9FB'}}>
+        <Container style={{backgroundColor: appTheme.appgreyBackground}}>
           <HeaderView navigation={navigation} title={'Employee Details'} />
           <Content>
             <Body
@@ -192,7 +192,7 @@ const EmployeeListScreen = ({navigation}) => {
     }
   } else {
     return (
-      <Container style={{backgroundColor: '#F3F9FB'}}>
+      <Container style={{backgroundColor: appTheme.appgreyBackground}}>
         <HeaderView navigation={navigation} title={'Employee Details'} />
         <Content>
           <Body style={{justifyContent: 'center'}}>
@@ -211,8 +211,8 @@ const DEVICE_HEIGHT = Dimensions.get('screen').height;
 
 const styles = StyleSheet.create({
   listContainer: {
-    backgroundColor: '#fff',
-    borderColor: '#858585',
+    backgroundColor: appTheme.textPrimary,
+    borderColor: appTheme.borderGrey,
     borderWidth: 0.5,
     alignItems: 'center',
     marginHorizontal: 16,
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
   },
   flatlist: {
     width: DEVICE_WIDTH - 32,
-    backgroundColor: '#fff',
+    backgroundColor: appTheme.textPrimary,
     height: 500,
   },
   tableHeader: {
@@ -257,7 +257,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   addEmployeeButton: {
-    backgroundColor: '#4796BD',
+    backgroundColor: appTheme.appBlue,
     margin: 40,
     padding: 10,
     paddingHorizontal: 20,
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
     // position:'fixed',
   },
   addEmployeeButtonText: {
-    color: '#fff',
+    color: appTheme.textPrimary,
     fontWeight: 'bold',
     textAlignVertical: 'center',
     // padding:6,

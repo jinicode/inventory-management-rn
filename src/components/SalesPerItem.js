@@ -107,7 +107,7 @@ const Functional = () => {
     digits: 2,
     backgroundTint: processColor('teal'),
     markerColor: processColor('#F0C0FF8C'),
-    textColor: processColor('white'),
+    textColor: processColor(appTheme.textPrimary),
   };
 
 

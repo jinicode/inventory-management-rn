@@ -21,18 +21,18 @@ const deviceHeight = Dimensions.get('window').height;
 
 const MyHeader = ({ navigation }) => {
   return (
-    <Header style={{ backgroundColor: '#4796BD', flexDirection: 'row' }}>
+    <Header style={{ backgroundColor: appTheme.appBlue, flexDirection: 'row' }}>
       <Left>
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
-          <Icon name="menu" color="white" size={35} />
+          <Icon name="menu" color={appTheme.textPrimary} size={35} />
         </TouchableOpacity>
       </Left>
       <Body>
-        <Text style={{ fontSize: 21, color: '#fff' }}>Drawer</Text>
+        <Text style={{ fontSize: 21, color: appTheme.textPrimary }}>Drawer</Text>
       </Body>
       <Right>
         <TouchableOpacity onPress={() => { }}>
-          <Icon name="user" color="white" size={35} />
+          <Icon name="user" color={appTheme.textPrimary} size={35} />
         </TouchableOpacity>
       </Right>
     </Header>
@@ -51,10 +51,10 @@ const DrawerScreen2 = ({ navigation }) => {
       <HeaderView navigation={navigation} />
 
       <Tabs>
-        <Tab activeTabStyle={{ backgroundColor: '#4796BD' }} tabStyle={{ backgroundColor: '#4796BD' }} heading="Buy">
+        <Tab activeTabStyle={{ backgroundColor: appTheme.appBlue }} tabStyle={{ backgroundColor: appTheme.appBlue }} heading="Buy">
           <Buy navigation={navigation} />
         </Tab>
-        <Tab activeTabStyle={{ backgroundColor: '#4796BD' }} tabStyle={{ backgroundColor: '#4796BD' }} heading="Sell">
+        <Tab activeTabStyle={{ backgroundColor: appTheme.appBlue}} tabStyle={{ backgroundColor: appTheme.appBlue }} heading="Sell">
           <Sell />
         </Tab>
       </Tabs>

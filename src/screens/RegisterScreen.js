@@ -27,9 +27,9 @@ import {spacing} from "../constants/dimension";
 import fontSizes from "../constants/fontSizes";
 const RegisterScreen = ({navigation}) => {
   return (
-    <Container style={{backgroundColor: '#F3F9FB'}}>
-       <Header style={{ backgroundColor: '#4796BD', flexDirection: 'row', alignItems: 'center' }} androidStatusBarColor="#247095">
-        <Text style={{ color: '#fff', fontSize: 20 }}>Register</Text>
+    <Container style={{backgroundColor: appTheme.appgreyBackground}}>
+       <Header style={{ backgroundColor: appTheme.appBlue, flexDirection: 'row', alignItems: 'center' }} androidStatusBarColor={appTheme.statusBar}>
+        <Text style={{ color: appTheme.textPrimary, fontSize: 20 }}>Register</Text>
       </Header>
       <Content>
         <Body>
@@ -38,7 +38,7 @@ const RegisterScreen = ({navigation}) => {
             style={{
               alignSelf: 'flex-start',
               fontSize: 25,
-              color: '#122E40',
+              color: appTheme.paleBlue,
               marginLeft: 28,
               marginTop: 25,
               marginBottom: 10,
@@ -102,7 +102,7 @@ const RegisterScreen = ({navigation}) => {
             style={{
               alignSelf: 'flex-start',
               fontSize: 25,
-              color: '#122E40',
+              color: appTheme.paleBlue,
 
               marginLeft: 28,
 
@@ -167,13 +167,13 @@ const styles = StyleSheet.create({
   loginButton: {
     width: 280,
     height: 40,
-    backgroundColor: '#4796BD',
+    backgroundColor: appTheme.appBlue,
     borderRadius: 20,
     justifyContent: 'center',
     marginTop: 25,
   },
   buttonText: {
-    color: '#fff',
+    color: appTheme.textPrimary,
     fontSize: 20,
     alignSelf: 'center',
     alignContent: 'flex-start',
@@ -181,13 +181,13 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 30,
-    color: '#122E40',
+    color: appTheme.paleBlue,
     fontWeight: 'bold',
     marginTop: 25,
   },
 
   inputBox: {
-    backgroundColor: '#E0E0E0',
+    backgroundColor: appTheme.darkGrey,
     borderRadius: 10,
     marginRight: 28,
     marginLeft: 28,

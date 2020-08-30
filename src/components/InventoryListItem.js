@@ -78,7 +78,7 @@ export default class InventoryListItem extends React.Component {
 const listItemStyles = StyleSheet.create({
   container: {
     paddingVertical: 5,
-    borderColor: '#E0E0E0',
+    borderColor: appTheme.darkGrey,
     borderWidth: 0.5,
   },
   name: {
@@ -110,6 +110,4 @@ const listItemStyles = StyleSheet.create({
     // flex: 0.12,
   },
 
-  // backgroundColor: '#4796BD', blue
-  // backgroundColor: '#E0E0E0', grey
 });

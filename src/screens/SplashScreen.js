@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   heading: {
     textAlign: 'center',
     fontSize: 30,
-    color: '#122E40',
+    color: appTheme.paleBlue,
     fontWeight: 'bold',
     marginTop: 65,
     lineHeight: 50,

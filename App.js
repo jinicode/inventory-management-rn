@@ -11,7 +11,6 @@ import InventoryScreen from './src/screens/InventoryScreen';
 import DrawerScreen2 from './src/screens/TransactionsScreen';
 import EmployeeListScreen from './src/screens/EmployeeListScreen';
 import SplashScreen from './src/screens/SplashScreen';
-//import ExpiryScreen from './src/screens/ExpiryScreen';
 import CustomDrawer from './src/components/CustomDrawer'
 import ProfilePage from './src/screens/ProfilePage'
 import {
@@ -19,6 +18,9 @@ import {
   DarkTheme,
   DefaultTheme,
 } from '@react-navigation/native';
+import {appTheme} from "./src/constants/colors";
+import {spacing} from "./src/constants/dimension";
+import fontSizes from "./src/constants/fontSizes";
 import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
 import RegisterScreen from './src/screens/RegisterScreen';
 const AppStack = createStackNavigator();
@@ -37,12 +39,12 @@ const App = ({ navigation }) => {
         <AppStack.Screen
           name="SplashScreen"
           component={SplashScreen}
-        // options={{ title: 'Inventory Management', headerTitleAlign: 'center' }}
+        
         />
         <AppStack.Screen
           name="RegisterScreen"
           component={RegisterScreen}
-        // options={{ title: 'Inventory Management', headerTitleAlign: 'center' }}
+        
         />
         <AppStack.Screen
           name="ProfilePage"
@@ -56,14 +58,14 @@ const App = ({ navigation }) => {
             headerLeft: () => {
               return (
                 <TouchableOpacity onPress={() => { }}>
-                  <Icon_Feather name="menu" color="white" size={35} />
+                  <Icon_Feather name="menu" color={appTheme.textPrimary} size={35} />
                 </TouchableOpacity>
               );
             },
             headerRight: () => {
               return (
                 <TouchableOpacity onPress={() => { }}>
-                  <Icon_Feather name="user" color="white" size={35} />
+                  <Icon_Feather name="user" color={appTheme.textPrimary} size={35} />
                 </TouchableOpacity>
               );
             },
@@ -95,7 +97,7 @@ function BurgerBtn() {
         component={HomeScreen}
         options={
           ({ title: 'Home' },
-            { drawerIcon: () => <Icon_MaterialIcons name="home" size={24} color="#4796BD" /> })
+            { drawerIcon: () => <Icon_MaterialIcons name="home" size={24} color={appTheme.appBlue} /> })
         }
       />
 
@@ -104,7 +106,7 @@ function BurgerBtn() {
         component={InventoryScreen}
         options={
           ({ title: 'Inventory' },
-            { drawerIcon: () => <Icon_Feather name="list" size={24} color="#4796BD" /> })
+            { drawerIcon: () => <Icon_Feather name="list" size={24} color={appTheme.appBlue} /> })
         }
       />
       {/* <Drawer.Screen
@@ -122,7 +124,7 @@ function BurgerBtn() {
         component={StackFn}
         options={
           ({ title: 'Employee' },
-            { drawerIcon: () => <Icon_MaterialIcons name="person" size={24} color="#4796BD" /> })
+            { drawerIcon: () => <Icon_MaterialIcons name="person" size={24} color={appTheme.appBlue} /> })
         }
       />
       <Drawer.Screen
@@ -135,7 +137,7 @@ function BurgerBtn() {
           {labelStyle:{fontSize: 55,}},
           {
             drawerIcon: () => (
-              <Icon_MaterialIcons name="attach-money" size={24} color="#4796BD"/>
+              <Icon_MaterialIcons name="attach-money" size={24} color={appTheme.appBlue}/>
             ),
           })
         }
@@ -156,29 +158,29 @@ const MyTheme = {
   dark: false,
   colors: {
     primary: '#5c5e61',
-    background: '#F3F9FB',
-    card: '#fff',
+    background: appTheme.appgreyBackground,
+    card: appTheme.textPrimary,
     text: '#000',
     border: 'rgb(199, 199, 204)',
   },
 };
 
-// const LoginStack = createStackNavigator();
-// const RegisterStack = createStackNavigator();
-// function Login() {
-//   return (
-//     <LoginStack.Navigator headerMode='none'>
-//       <LoginStack.Screen name="LoginScreen" component={LoginScreen} />
-//       <LoginStack.Screen name="HomeScreen" component={HomeScreen} />
-//     </LoginStack.Navigator>
-//   );
-// }
 
-// function Register() {
-//   return (
-//     <RegisterStack.Navigator headerMode='none'>
-//       <RegisterStack.Screen name="RegisterScreen" component={RegisterScreen} />
-//       <RegisterStack.Screen name="HomeScreen" component={HomeScreen} />
-//     </RegisterStack.Navigator>
-//   );
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
