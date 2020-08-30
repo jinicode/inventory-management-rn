@@ -1,13 +1,8 @@
-import { CardItem } from 'native-base';
+import {CardItem} from 'native-base';
 import React from 'react';
-import {
-  StyleSheet,
-
-  Text,
-  TouchableOpacity, View
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import { appTheme } from '../constants/colors';
+import {appTheme} from '../constants/colors';
 
 export default class InventoryListItem extends React.Component {
   componentDidMount() {

@@ -1,22 +1,17 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import { Body, CardItem, Container, Content } from 'native-base';
-import React, { useEffect, useState } from 'react';
+import {Body, CardItem, Container, Content} from 'native-base';
+import React, {useEffect, useState} from 'react';
 import {
-  Dimensions, FlatList,
-
-
-
-
-
-
-  RefreshControl, ScrollView, StyleSheet,
-
-
-  Text, View
+  Dimensions,
+  FlatList,
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import ExpiryListItem from '../components/ExpiryListItem';
-import { appTheme } from '../constants/colors';
-
+import {appTheme} from '../constants/colors';
 
 const ExpiryScreen = ({navigation}) => {
   const [expiryList, setExpiryList] = useState([]);

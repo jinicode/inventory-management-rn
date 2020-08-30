@@ -1,8 +1,8 @@
-import { CardItem } from 'native-base';
+import {CardItem} from 'native-base';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Foundation';
-import { appTheme } from '../constants/colors';
+import {appTheme} from '../constants/colors';
 
 export default class EmployeeListItem extends React.Component {
   componentDidMount() {

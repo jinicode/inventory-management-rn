@@ -1,7 +1,7 @@
-import { CardItem } from 'native-base';
+import {CardItem} from 'native-base';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { appTheme } from '../constants/colors';
+import {StyleSheet, Text, View} from 'react-native';
+import {appTheme} from '../constants/colors';
 
 export default class ExpiryListItem extends React.Component {
   componentDidMount() {

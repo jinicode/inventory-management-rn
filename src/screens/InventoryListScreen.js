@@ -1,59 +1,31 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import {
   Body,
-
-
-
-
-
-
-  CardItem, Container,
-  Content, Input,
-
-
+  CardItem,
+  Container,
+  Content,
+  Input,
   Item,
-  Label
+  Label,
 } from 'native-base';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
-  ActivityIndicator, Alert,
-
-
-
-
-
-
-
-
-
-  Dimensions, FlatList,
-
-
-
-
-
-
-
-
-
-  Modal, StyleSheet,
-
-
+  ActivityIndicator,
+  Alert,
+  Dimensions,
+  FlatList,
+  Modal,
+  StyleSheet,
   Text,
-
-
-
-
-
-
-  TextInput, TouchableOpacity, View
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import NumericInput from 'react-native-numeric-input';
 import RadioForm from 'react-native-simple-radio-button';
 import InventoryListItem from '../components/InventoryListItem';
-import { appTheme } from '../constants/colors';
-import { showSuccess } from "../utils/notification";
-
+import {appTheme} from '../constants/colors';
+import {showSuccess} from '../utils/notification';
 
 const InventoryListScreen = ({navigation}) => {
   const [inventoryList, setInventoryList] = useState([]);
@@ -175,7 +147,7 @@ const InventoryListScreen = ({navigation}) => {
         console.log(data);
         setOffset(0);
         getInventoryList(0);
-       showSuccess('Product Updated');
+        showSuccess('Product Updated');
       })
       .catch(err => console.log(err));
     setUpdateName('');
@@ -488,16 +460,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingLeft: 6,
     fontWeight: 'bold',
-    
   },
   itemsHeader: {
-    
     fontSize: 18,
     fontWeight: 'bold',
-    
   },
   priceHeader: {
-    
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -509,13 +477,11 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: 'row',
     alignSelf: 'center',
-    
   },
   addEmployeeButtonText: {
     color: appTheme.textPrimary,
     fontWeight: 'bold',
     textAlignVertical: 'center',
-    
   },
   centeredView: {
     flex: 1,

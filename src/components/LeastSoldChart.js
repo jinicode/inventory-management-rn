@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   ActivityIndicator,
-  AsyncStorage, Dimensions,
-
-
+  AsyncStorage,
+  Dimensions,
   Image,
-
-
-  StyleSheet, Text, View
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
-import { LineChart } from 'react-native-chart-kit';
-import { SCLAlert, SCLAlertButton } from 'react-native-scl-alert';
-import { appTheme } from '../constants/colors';
+import {LineChart} from 'react-native-chart-kit';
+import {SCLAlert, SCLAlertButton} from 'react-native-scl-alert';
+import {appTheme} from '../constants/colors';
 const screenWidth = Dimensions.get('window').width;
 
 const blueImage = require('../Images/file_blue.png');

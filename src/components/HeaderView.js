@@ -1,8 +1,8 @@
-import { Body, Header, Left, Right } from 'native-base';
+import {Body, Header, Left, Right} from 'native-base';
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import { appTheme } from '../constants/colors';
+import {appTheme} from '../constants/colors';
 
 const HeaderView = ({navigation, title}) => {
   return (

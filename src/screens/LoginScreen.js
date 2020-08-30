@@ -1,27 +1,17 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import {
   Body,
-
   Container,
   Content,
-
-
-  Header, Input,
-
-
+  Header,
+  Input,
   Item,
-  Label
+  Label,
 } from 'native-base';
-import React, { useState } from 'react';
-import {
-  Image, StyleSheet,
-
-  Text,
-  TouchableOpacity
-} from 'react-native';
-import { appTheme } from '../constants/colors';
-import { showError } from "../utils/notification";
-
+import React, {useState} from 'react';
+import {Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {appTheme} from '../constants/colors';
+import {showError} from '../utils/notification';
 
 // For Testing enter password : admin   email : admin@admin.com in text inputs
 
@@ -81,9 +71,7 @@ const LoginScreen = ({navigation}) => {
               console.log(err);
             });
         } else {
-          showError('Invalid email or password')
-           
-          
+          showError('Invalid email or password');
         }
       })
       .catch(err => console.log(err));

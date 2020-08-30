@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import { Content, Form, Picker } from 'native-base';
-import React, { useEffect, useState } from 'react';
-import { Dimensions, processColor, StyleSheet, View } from 'react-native';
-import { LineChart } from 'react-native-charts-wrapper';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { appTheme } from '../constants/colors';
+import {Content, Form, Picker} from 'native-base';
+import React, {useEffect, useState} from 'react';
+import {Dimensions, processColor, StyleSheet, View} from 'react-native';
+import {LineChart} from 'react-native-charts-wrapper';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {appTheme} from '../constants/colors';
 
 const Functional = () => {
   const [min_Vis, setMin_Vis] = useState(0);

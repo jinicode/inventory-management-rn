@@ -1,26 +1,18 @@
 import AsyncStorage from '@react-native-community/async-storage';
+import {Body, Container, Content, Input, Item, Label} from 'native-base';
+import React, {Component} from 'react';
 import {
-  Body,
-
-  Container,
-  Content, Input,
-
-
-
-  Item,
-  Label
-} from 'native-base';
-import React, { Component } from 'react';
-import {
-  Alert, Picker, ScrollView, StyleSheet,
-
+  Alert,
+  Picker,
+  ScrollView,
+  StyleSheet,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import HeaderView from '../components/HeaderView';
-import { appTheme } from '../constants/colors';
-import { showError, showSuccess } from "../utils/notification";
+import {appTheme} from '../constants/colors';
+import {showError, showSuccess} from '../utils/notification';
 
 export default class AddEmployee extends Component {
   constructor(props) {

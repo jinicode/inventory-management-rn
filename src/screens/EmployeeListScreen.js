@@ -1,45 +1,22 @@
 import AsyncStorage from '@react-native-community/async-storage';
+import {Body, CardItem, Container, Content} from 'native-base';
+import React, {useEffect, useState} from 'react';
 import {
-  Body,
-
-
-
-
-
-
-
-
-
-  CardItem, Container,
-  Content
-} from 'native-base';
-import React, { useEffect, useState } from 'react';
-import {
-  ActivityIndicator, Alert,
-
-
-
-
-
-
-
-
-  Dimensions, FlatList,
-
-
-  ScrollView, StyleSheet,
-
-
+  ActivityIndicator,
+  Alert,
+  Dimensions,
+  FlatList,
+  ScrollView,
+  StyleSheet,
   Text,
-
-
-
-  ToastAndroid, TouchableOpacity, View
+  ToastAndroid,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import EmployeeListItem from '../components/EmployeeListItem';
 import HeaderView from '../components/HeaderView';
-import { appTheme } from '../constants/colors';
+import {appTheme} from '../constants/colors';
 
 const EmployeeListScreen = ({navigation}) => {
   const [employeeList, setEmployeeList] = useState([]);

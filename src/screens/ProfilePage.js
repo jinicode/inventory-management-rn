@@ -1,18 +1,19 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import { Body, Header, Input, Label, Left } from 'native-base';
-import React, { useEffect, useState } from 'react';
+import {Body, Header, Input, Label, Left} from 'native-base';
+import React, {useEffect, useState} from 'react';
 import {
-  ActivityIndicator, ScrollView,
-  StyleSheet, Text,
-
-
-  TouchableOpacity, View
+  ActivityIndicator,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import { appTheme } from '../constants/colors';
-import { isTokenValid } from '../utils/isTokenValid';
-import { logout } from '../utils/logout';
-import { showError, showSuccess } from "../utils/notification";
+import {appTheme} from '../constants/colors';
+import {isTokenValid} from '../utils/isTokenValid';
+import {logout} from '../utils/logout';
+import {showError, showSuccess} from '../utils/notification';
 
 const ProfilePage = ({navigation}) => {
   const [editMode, toggleEditMode] = useState(false);
@@ -106,7 +107,7 @@ const ProfilePage = ({navigation}) => {
         const resJson = await res.json();
         console.log(resJson);
         if (res.status === 200) {
-        showSuccess('Details updated.');
+          showSuccess('Details updated.');
         } else {
           showError('Error in updating details');
         }

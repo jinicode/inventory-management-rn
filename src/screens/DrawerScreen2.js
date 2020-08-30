@@ -1,24 +1,18 @@
 import {
-  Body, Container,
-
-
-
-
+  Body,
+  Container,
   Header,
   Left,
-  Right, Tab,
-  Tabs, Text
+  Right,
+  Tab,
+  Tabs,
+  Text,
 } from 'native-base';
 import React from 'react';
-import {
-  Dimensions,
-
-
-  TouchableOpacity
-} from 'react-native';
+import {Dimensions, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import HeaderView from '../components/HeaderView';
-import { appTheme } from '../constants/colors';
+import {appTheme} from '../constants/colors';
 import Buy from './Buy';
 import Sell from './Sell';
 

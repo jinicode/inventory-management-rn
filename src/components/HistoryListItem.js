@@ -1,20 +1,18 @@
-import { CardItem } from 'native-base';
+import {CardItem} from 'native-base';
 import React from 'react';
 import {
-  AsyncStorage, PermissionsAndroid,
-  Platform, StyleSheet,
-
-
+  AsyncStorage,
+  PermissionsAndroid,
+  Platform,
+  StyleSheet,
   Text,
-
-
-
-  TouchableOpacity, View
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import RNFetchBlob from 'rn-fetch-blob';
-import { appTheme } from '../constants/colors';
-import { showError } from "../utils/notification";
+import {appTheme} from '../constants/colors';
+import {showError} from '../utils/notification';
 
 export default class HistoryListItem extends React.Component {
   componentDidMount() {
@@ -53,7 +51,6 @@ export default class HistoryListItem extends React.Component {
         Authorization: 'Token ' + auth_key,
       })
       .then(async res => {
-        
         if ((Platform.OS = 'android')) {
           android.actionViewIntent(res.path(), 'application/pdf');
         }
@@ -92,11 +89,9 @@ export default class HistoryListItem extends React.Component {
   };
 
   render() {
-    
     return (
       <View style={styles.container}>
-        <CardItem
-          style={styles.eachRow}>
+        <CardItem style={styles.eachRow}>
           <Text style={styles.type}>
             {this.props.item.item.in_or_out == 'In' ? 'Buy' : 'Sell'}
           </Text>
@@ -152,8 +147,6 @@ const styles = StyleSheet.create({
   product: {
     flex: 0.3,
     fontSize: 16,
-    
-    
   },
   quantity: {
     flex: 0.2,
@@ -165,5 +158,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 5,
   },
-  downloadButton:{flex: 0.08, marginRight: -5}
+  downloadButton: {flex: 0.08, marginRight: -5},
 });

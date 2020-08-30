@@ -1,20 +1,15 @@
 import {
   Body,
-
   Container,
   Content,
-
-
-
-  Header, Input,
-
-
+  Header,
+  Input,
   Item,
-  Label
+  Label,
 } from 'native-base';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { appTheme } from '../constants/colors';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {appTheme} from '../constants/colors';
 
 const RegisterScreen = ({navigation}) => {
   return (

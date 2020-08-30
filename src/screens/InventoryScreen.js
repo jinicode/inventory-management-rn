@@ -1,8 +1,8 @@
-import { Container, Tab, Tabs } from 'native-base';
+import {Container, Tab, Tabs} from 'native-base';
 import React from 'react';
-import { Dimensions } from 'react-native';
+import {Dimensions} from 'react-native';
 import HeaderView from '../components/HeaderView';
-import { appTheme } from '../constants/colors';
+import {appTheme} from '../constants/colors';
 import ExpiryScreen from './ExpiryScreen';
 import InventoryListScreen from './InventoryListScreen';
 

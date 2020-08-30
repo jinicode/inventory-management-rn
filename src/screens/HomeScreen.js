@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import {Dimensions, ScrollView, StyleSheet, Text, View} from 'react-native';
 import HeaderView from '../components/HeaderView';
 import SalesOverTime from '../components/SalesOverTime';
 import SalesPerItem from '../components/SalesPerItem';
-import { appTheme } from '../constants/colors';
+import {appTheme} from '../constants/colors';
 const DEVICE_WIDTH = Dimensions.get('screen').width;
 const DEVICE_HEIGHT = Dimensions.get('screen').height;
 
