@@ -152,20 +152,20 @@ const LoginScreen = ({ navigation }) => {
 
 
           <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.newUser}>New user ? </Text>
+            <Text style={styles.newUser}>New user? </Text>
             <TouchableOpacity onPress={() => {
               navigation.navigate('RegisterScreen');
             }}   ><Text style={{
               fontSize: 18,
               textDecorationLine: 'underline',
-              color: '#9ca2ad',
+              color: 'black',
               // borderBottomWidth:1,
               // borderBottomColor: 'black',
 
               marginTop: 25,
               marginBottom: 10,
               marginBottom: 10,
-            }}>Register </Text></TouchableOpacity>
+            }}>Register</Text></TouchableOpacity>
           </View>
         </Body>
       </Content>
@@ -178,7 +178,7 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   newUser: {
     fontSize: 18,
-    color: '#9ca2ad',
+    color: 'black',
 
     marginTop: 25,
     marginBottom: 10,
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 15,
-    color: '#828282',
+    color: appTheme.labelColor,
   },
   inputArea: {
     paddingLeft: 20,

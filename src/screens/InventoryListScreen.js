@@ -302,7 +302,6 @@ const InventoryListScreen = ({navigation}) => {
               <NumericInput
                 value={parseInt(lowerLimit)}
                 onChange={value => {
-                  console.log(typeof(value))
                   setLowerLimit(value.toString());
                 }}
                 totalWidth={150}
@@ -332,8 +331,8 @@ const InventoryListScreen = ({navigation}) => {
               radio_props={radio_props}
               labelHorizontal={true}
               formHorizontal={true}
-              buttonColor={'#434A5E'}
-              labelColor={'#434A5E'}
+              buttonColor={'black'}
+              labelColor={'black'}
               initial={(updateProd.loose===true)?0:1}
               labelStyle={{marginRight: 20}}
               style={{paddingLeft: 10, marginTop: 8}}
@@ -419,7 +418,7 @@ const InventoryListScreen = ({navigation}) => {
             onEndReachedThreshold={!isSearch && 0.2}
             ListFooterComponent={() => {
               if (isLoading) {
-                return <ActivityIndicator size="large" color="#828282" />;
+                return <ActivityIndicator size="large" color={appTheme.labelColor} />;
               }
               return null;
             }}
@@ -454,7 +453,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   tableHeader: {
-    backgroundColor: '#e7eff2',
+    backgroundColor: appTheme.tableHeader,
     
     width: DEVICE_WIDTH - 32,
     borderTopRightRadius: 20,
@@ -561,7 +560,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 15,
-    color: '#828282',
+    color: appTheme.labelColor,
   },
   inputArea: {
     paddingLeft: 20,

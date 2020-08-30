@@ -138,14 +138,14 @@ const Functional = () => {
           <Form
             style={{
               borderWidth: 1,
-              borderColor: '#0006',
+              borderColor: 'black',
               flex: 0.8,
               borderRadius: 5,
               marginTop: 70
             }}>
             <Picker
               note
-              style={{ borderColor: '#0f0', borderWidth: 1, width: 200 }}
+              style={{ borderColor: 'black', borderWidth: 1, width: 200 }}
               mode='dropdown'
               selectedValue={dropdownSelect}
               onValueChange={(value, index) => setDropdownSelect(value)}
@@ -191,7 +191,7 @@ export default Functional;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: appTheme.darkGrey,
   },
   title: {
     marginTop: 10,
@@ -210,11 +210,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+
 });
 
 // dummy data

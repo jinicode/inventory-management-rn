@@ -238,8 +238,8 @@ export default class AddEmployee extends Component {
                 ]}
                 labelHorizontal={true}
                 formHorizontal={true}
-                buttonColor={'#434A5E'}
-                labelColor={'#434A5E'}
+                buttonColor={'black'}
+                labelColor={'black'}
                 labelStyle={{marginRight: 20}}
                 style={{paddingLeft: 10, marginTop: 8}}
                 onPress={value => {
@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
 
   label: {
     paddingLeft: 30,
-    color: '#828282',
+    color: appTheme.labelColor,
     fontSize: 15,
   },
   inputArea: {

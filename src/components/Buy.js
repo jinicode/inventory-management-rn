@@ -409,7 +409,7 @@ const styles = StyleSheet.create({
     marginLeft: '10%',
   },
 mainBorder: {
-  borderColor: '#0004',
+  borderColor: appTheme.darkGrey,
   borderWidth: 1,
   width: '90%',
   alignSelf: 'center',
@@ -432,7 +432,7 @@ mainBorder: {
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 15,
-    color: '#828282',
+    color: appTheme.labelColor,
   },
   inputArea: {
     paddingLeft: 20,
@@ -470,7 +470,7 @@ mainBorder: {
     marginRight: 10,
   },
   mainView:{
-    borderColor: '#0004',
+    borderColor: appTheme.darkGrey,
     borderWidth: 1,
     width: '90%',
     alignSelf: 'center',

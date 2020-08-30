@@ -57,18 +57,7 @@ export default class InventoryListItem extends React.Component {
             </Text>
           </View>
 
-          {/* <View style={listItemStyles.rightButtons}>
-            <TouchableOpacity onPress={() => (this.props.onEditPressed(this.props.item.id))}>
-              <Text style={listItemStyles.rightButtonText}>
-                Edit |
-                        </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => (this.props.onDeletePressed(this.props.item.id))}>
-              <Text style={listItemStyles.rightButtonText}>
-                {' '}Delete
-                        </Text>
-            </TouchableOpacity>
-          </View> */}
+         
         </CardItem>
       </View>
     );
@@ -99,11 +88,7 @@ const listItemStyles = StyleSheet.create({
     flex: 0.15,
     flexDirection: 'row',
   },
-  rightButtonText: {
-    fontSize: 12,
-    color: '#626262',
-    // color:'red',
-  },
+
   icon: {
     // paddingRight: 8,
     marginRight: 10,

@@ -78,7 +78,9 @@ const appMainColors={
   greyBackground:'#f3f9fb',
   paleBlue:'#122E40',
   darkGrey:'#E0E0E0',
-  borderGray:'#858585'
+  borderGray:'#858585',
+  labelColor:'#828282',
+  tableHeaderBackground:'#e7eff2',
 }
 
 export const appTheme = {
@@ -89,6 +91,8 @@ export const appTheme = {
   appBlue:appMainColors.blue,
   textPrimary:'white',
   statusBar:appMainColors.statusBar,
+  labelColor:appMainColors.labelColor,
+  tableHeader:appMainColors.tableHeaderBackground
 }
 
 export const bmiColors = {

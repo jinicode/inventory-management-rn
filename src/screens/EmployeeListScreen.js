@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     height: 500,
   },
   tableHeader: {
-    backgroundColor: '#e7eff2',
+    backgroundColor: appTheme.tableHeader,
     // backgroundColor: 'red',
     // alignSelf: 'stretch',
     width: DEVICE_WIDTH - 32,

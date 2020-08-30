@@ -222,7 +222,7 @@ export default Functional;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: appTheme.darkGrey,
   },
   title: {
     marginTop: 10,

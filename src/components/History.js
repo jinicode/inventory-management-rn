@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   tableHeader: {
-    backgroundColor: '#e7eff2',
+    backgroundColor: appTheme.tableHeader,
     width: DEVICE_WIDTH - 32,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,

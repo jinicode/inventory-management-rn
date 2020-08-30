@@ -111,7 +111,7 @@ const Sell = ({navigation}) => {
           <View style={{ flex: 1, flexDirection: 'row', marginBottom: 10 }}>
             <View
               style={{
-                borderColor: '#0004',
+                borderColor: appTheme.darkGrey,
                 borderWidth: 1,
                 width: '90%',
                 alignSelf: 'center',
@@ -161,7 +161,7 @@ const Sell = ({navigation}) => {
                 {/* for the separating line */}
                 <View
                   style={{
-                    borderColor: '#0004',
+                    borderColor: appTheme.darkGrey,
                     borderWidth: 1,
                     width: '90%',
                     alignSelf: 'center',
@@ -186,7 +186,7 @@ const Sell = ({navigation}) => {
                   <Form
                     style={{
                       borderWidth: 1,
-                      borderColor: '#0006',
+                      borderColor: 'black',
                       flex: 0.8,
                       borderRadius: 5,
                     }}>
@@ -368,7 +368,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 15,
-    color: '#828282',
+    color: appTheme.labelColor,
   },
   inputArea: {
     paddingLeft: 20,

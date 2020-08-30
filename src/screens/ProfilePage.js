@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
     },
     label: {
         paddingLeft: 5,
-        color: '#828282',
+        color: appTheme.labelColor,
         fontSize: 16,
         textAlignVertical: 'center',
 

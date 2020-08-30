@@ -158,7 +158,7 @@ export default RegisterScreen;
 const styles = StyleSheet.create({
   newUser: {
     fontSize: 18,
-    color: '#9ca2ad',
+    color: 'black',
 
     marginTop: 25,
     marginBottom: 10,
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 15,
-    color: '#828282',
+    color: appTheme.labelColor,
   },
   inputArea: {
     paddingLeft: 20,
